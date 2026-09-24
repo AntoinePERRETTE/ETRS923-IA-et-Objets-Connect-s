@@ -1,1 +1,1 @@
-# ETRS923-IA-et-Objets-Connect-s
+# ETRS923-IA-et-Objets-Connectes
