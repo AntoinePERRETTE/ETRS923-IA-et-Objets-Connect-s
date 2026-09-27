@@ -1,0 +1,28 @@
+
+=== Comparaison des Optimiseurs pour le Modèle 1 (Classification Softmax) ===
+
+--> Entraînement du Modèle 1 avec l'optimiseur : ADAM
+[ADAM] Précision sur le jeu de test : 0.9815 | Perte : 0.0956
+
+--> Entraînement du Modèle 1 avec l'optimiseur : SGD
+[SGD] Précision sur le jeu de test : 0.9717 | Perte : 0.0898
+
+--> Entraînement du Modèle 1 avec l'optimiseur : RMSPROP
+[RMSPROP] Précision sur le jeu de test : 0.9798 | Perte : 0.1919
+
+--> Entraînement du Modèle 1 avec l'optimiseur : ADAGRAD
+[ADAGRAD] Précision sur le jeu de test : 0.9391 | Perte : 0.2127
+
+=== Comparaison des Optimiseurs pour le Modèle 2 (Régression Logits) ===
+
+--> Entraînement du Modèle 2 avec l'optimiseur : ADAM
+[ADAM] MAE sur le jeu de test : 0.1659 | MSE (Perte) : 0.3541
+
+--> Entraînement du Modèle 2 avec l'optimiseur : SGD
+[SGD] MAE sur le jeu de test : 0.2716 | MSE (Perte) : 0.3816
+
+--> Entraînement du Modèle 2 avec l'optimiseur : RMSPROP
+[RMSPROP] MAE sur le jeu de test : 0.1705 | MSE (Perte) : 0.3262
+
+--> Entraînement du Modèle 2 avec l'optimiseur : ADAGRAD
+[ADAGRAD] MAE sur le jeu de test : 0.6391 | MSE (Perte) : 0.9168
