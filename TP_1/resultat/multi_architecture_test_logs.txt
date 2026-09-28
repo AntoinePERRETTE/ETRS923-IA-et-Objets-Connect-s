@@ -9,52 +9,52 @@
 ---- Architecture : 2_layers_300_100_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : RELU / ADAM / 2_layers_300_100_neurons
-[RELU / ADAM / 2_layers_300_100_neurons] Modèle 1 - Précision sur le jeu de test : 0.9768 | Précision entraînement (fin) : 0.9949 | Précision validation (fin) : 0.9768 | Perte : 0.1190
+[RELU / ADAM / 2_layers_300_100_neurons] Modèle 1 - Précision sur le jeu de test : 0.9773 | Précision entraînement (fin) : 0.9947 | Précision validation (fin) : 0.9773 | Perte : 0.1042
 
 --> Entraînement du Modèle 2 (Régression) : RELU / ADAM / 2_layers_300_100_neurons
-[RELU / ADAM / 2_layers_300_100_neurons] Modèle 2 - MAE sur le jeu de test : 0.2549 | MAE entraînement (fin) : 0.1760 | MAE validation (fin) : 0.2549 | MSE (Perte) : 0.3739
+[RELU / ADAM / 2_layers_300_100_neurons] Modèle 2 - MAE sur le jeu de test : 0.2717 | MAE entraînement (fin) : 0.1747 | MAE validation (fin) : 0.2717 | MSE (Perte) : 0.3844
 
 ---- Architecture : 3_layers_392_196_98_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : RELU / ADAM / 3_layers_392_196_98_neurons
-[RELU / ADAM / 3_layers_392_196_98_neurons] Modèle 1 - Précision sur le jeu de test : 0.9776 | Précision entraînement (fin) : 0.9941 | Précision validation (fin) : 0.9776 | Perte : 0.1099
+[RELU / ADAM / 3_layers_392_196_98_neurons] Modèle 1 - Précision sur le jeu de test : 0.9798 | Précision entraînement (fin) : 0.9931 | Précision validation (fin) : 0.9798 | Perte : 0.0884
 
 --> Entraînement du Modèle 2 (Régression) : RELU / ADAM / 3_layers_392_196_98_neurons
-[RELU / ADAM / 3_layers_392_196_98_neurons] Modèle 2 - MAE sur le jeu de test : 0.1842 | MAE entraînement (fin) : 0.1446 | MAE validation (fin) : 0.1842 | MSE (Perte) : 0.3467
+[RELU / ADAM / 3_layers_392_196_98_neurons] Modèle 2 - MAE sur le jeu de test : 0.1960 | MAE entraînement (fin) : 0.1411 | MAE validation (fin) : 0.1960 | MSE (Perte) : 0.3963
 
 ---- Architecture : 4_layers_512_256_128_64_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : RELU / ADAM / 4_layers_512_256_128_64_neurons
-[RELU / ADAM / 4_layers_512_256_128_64_neurons] Modèle 1 - Précision sur le jeu de test : 0.9802 | Précision entraînement (fin) : 0.9933 | Précision validation (fin) : 0.9802 | Perte : 0.0857
+[RELU / ADAM / 4_layers_512_256_128_64_neurons] Modèle 1 - Précision sur le jeu de test : 0.9810 | Précision entraînement (fin) : 0.9929 | Précision validation (fin) : 0.9810 | Perte : 0.0816
 
 --> Entraînement du Modèle 2 (Régression) : RELU / ADAM / 4_layers_512_256_128_64_neurons
-[RELU / ADAM / 4_layers_512_256_128_64_neurons] Modèle 2 - MAE sur le jeu de test : 0.1493 | MAE entraînement (fin) : 0.1227 | MAE validation (fin) : 0.1493 | MSE (Perte) : 0.3334
+[RELU / ADAM / 4_layers_512_256_128_64_neurons] Modèle 2 - MAE sur le jeu de test : 0.1697 | MAE entraînement (fin) : 0.1251 | MAE validation (fin) : 0.1697 | MSE (Perte) : 0.3594
 
 --- Optimiseur : RMSPROP ---
 
 ---- Architecture : 2_layers_300_100_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : RELU / RMSPROP / 2_layers_300_100_neurons
-[RELU / RMSPROP / 2_layers_300_100_neurons] Modèle 1 - Précision sur le jeu de test : 0.9804 | Précision entraînement (fin) : 0.9960 | Précision validation (fin) : 0.9804 | Perte : 0.1424
+[RELU / RMSPROP / 2_layers_300_100_neurons] Modèle 1 - Précision sur le jeu de test : 0.9785 | Précision entraînement (fin) : 0.9955 | Précision validation (fin) : 0.9785 | Perte : 0.1545
 
 --> Entraînement du Modèle 2 (Régression) : RELU / RMSPROP / 2_layers_300_100_neurons
-[RELU / RMSPROP / 2_layers_300_100_neurons] Modèle 2 - MAE sur le jeu de test : 0.2526 | MAE entraînement (fin) : 0.1897 | MAE validation (fin) : 0.2526 | MSE (Perte) : 0.3728
+[RELU / RMSPROP / 2_layers_300_100_neurons] Modèle 2 - MAE sur le jeu de test : 0.2681 | MAE entraînement (fin) : 0.1945 | MAE validation (fin) : 0.2681 | MSE (Perte) : 0.3855
 
 ---- Architecture : 3_layers_392_196_98_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : RELU / RMSPROP / 3_layers_392_196_98_neurons
-[RELU / RMSPROP / 3_layers_392_196_98_neurons] Modèle 1 - Précision sur le jeu de test : 0.9824 | Précision entraînement (fin) : 0.9944 | Précision validation (fin) : 0.9824 | Perte : 0.1341
+[RELU / RMSPROP / 3_layers_392_196_98_neurons] Modèle 1 - Précision sur le jeu de test : 0.9773 | Précision entraînement (fin) : 0.9943 | Précision validation (fin) : 0.9773 | Perte : 0.1796
 
 --> Entraînement du Modèle 2 (Régression) : RELU / RMSPROP / 3_layers_392_196_98_neurons
-[RELU / RMSPROP / 3_layers_392_196_98_neurons] Modèle 2 - MAE sur le jeu de test : 0.2282 | MAE entraînement (fin) : 0.1571 | MAE validation (fin) : 0.2282 | MSE (Perte) : 0.3735
+[RELU / RMSPROP / 3_layers_392_196_98_neurons] Modèle 2 - MAE sur le jeu de test : 0.2384 | MAE entraînement (fin) : 0.1603 | MAE validation (fin) : 0.2384 | MSE (Perte) : 0.3525
 
 ---- Architecture : 4_layers_512_256_128_64_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : RELU / RMSPROP / 4_layers_512_256_128_64_neurons
-[RELU / RMSPROP / 4_layers_512_256_128_64_neurons] Modèle 1 - Précision sur le jeu de test : 0.9753 | Précision entraînement (fin) : 0.9912 | Précision validation (fin) : 0.9753 | Perte : 0.2581
+[RELU / RMSPROP / 4_layers_512_256_128_64_neurons] Modèle 1 - Précision sur le jeu de test : 0.9785 | Précision entraînement (fin) : 0.9907 | Précision validation (fin) : 0.9785 | Perte : 0.2378
 
 --> Entraînement du Modèle 2 (Régression) : RELU / RMSPROP / 4_layers_512_256_128_64_neurons
-[RELU / RMSPROP / 4_layers_512_256_128_64_neurons] Modèle 2 - MAE sur le jeu de test : 0.1816 | MAE entraînement (fin) : 0.1034 | MAE validation (fin) : 0.1816 | MSE (Perte) : 0.3451
+[RELU / RMSPROP / 4_layers_512_256_128_64_neurons] Modèle 2 - MAE sur le jeu de test : 0.1576 | MAE entraînement (fin) : 0.1027 | MAE validation (fin) : 0.1576 | MSE (Perte) : 0.3372
 
 =======================================================
        Tests avec fonction d'activation : TANH       
@@ -66,33 +66,33 @@
 ---- Architecture : 2_layers_300_100_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : TANH / ADAM / 2_layers_300_100_neurons
-[TANH / ADAM / 2_layers_300_100_neurons] Modèle 1 - Précision sur le jeu de test : 0.9787 | Précision entraînement (fin) : 0.9955 | Précision validation (fin) : 0.9787 | Perte : 0.0832
+[TANH / ADAM / 2_layers_300_100_neurons] Modèle 1 - Précision sur le jeu de test : 0.9759 | Précision entraînement (fin) : 0.9945 | Précision validation (fin) : 0.9759 | Perte : 0.0922
 
 --> Entraînement du Modèle 2 (Régression) : TANH / ADAM / 2_layers_300_100_neurons
-[TANH / ADAM / 2_layers_300_100_neurons] Modèle 2 - MAE sur le jeu de test : 0.3199 | MAE entraînement (fin) : 0.2085 | MAE validation (fin) : 0.3199 | MSE (Perte) : 0.4075
+[TANH / ADAM / 2_layers_300_100_neurons] Modèle 2 - MAE sur le jeu de test : 0.3111 | MAE entraînement (fin) : 0.2103 | MAE validation (fin) : 0.3111 | MSE (Perte) : 0.3962
 
 ---- Architecture : 3_layers_392_196_98_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : TANH / ADAM / 3_layers_392_196_98_neurons
-[TANH / ADAM / 3_layers_392_196_98_neurons] Modèle 1 - Précision sur le jeu de test : 0.9740 | Précision entraînement (fin) : 0.9909 | Précision validation (fin) : 0.9740 | Perte : 0.0940
+[TANH / ADAM / 3_layers_392_196_98_neurons] Modèle 1 - Précision sur le jeu de test : 0.9750 | Précision entraînement (fin) : 0.9914 | Précision validation (fin) : 0.9750 | Perte : 0.0856
 
 --> Entraînement du Modèle 2 (Régression) : TANH / ADAM / 3_layers_392_196_98_neurons
-[TANH / ADAM / 3_layers_392_196_98_neurons] Modèle 2 - MAE sur le jeu de test : 0.2243 | MAE entraînement (fin) : 0.1576 | MAE validation (fin) : 0.2243 | MSE (Perte) : 0.3546
+[TANH / ADAM / 3_layers_392_196_98_neurons] Modèle 2 - MAE sur le jeu de test : 0.2199 | MAE entraînement (fin) : 0.1583 | MAE validation (fin) : 0.2199 | MSE (Perte) : 0.3852
 
 ---- Architecture : 4_layers_512_256_128_64_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : TANH / ADAM / 4_layers_512_256_128_64_neurons
-[TANH / ADAM / 4_layers_512_256_128_64_neurons] Modèle 1 - Précision sur le jeu de test : 0.9717 | Précision entraînement (fin) : 0.9874 | Précision validation (fin) : 0.9717 | Perte : 0.1072
+[TANH / ADAM / 4_layers_512_256_128_64_neurons] Modèle 1 - Précision sur le jeu de test : 0.9743 | Précision entraînement (fin) : 0.9880 | Précision validation (fin) : 0.9743 | Perte : 0.0986
 
 --> Entraînement du Modèle 2 (Régression) : TANH / ADAM / 4_layers_512_256_128_64_neurons
-[TANH / ADAM / 4_layers_512_256_128_64_neurons] Modèle 2 - MAE sur le jeu de test : 0.2368 | MAE entraînement (fin) : 0.1566 | MAE validation (fin) : 0.2368 | MSE (Perte) : 0.4836
+[TANH / ADAM / 4_layers_512_256_128_64_neurons] Modèle 2 - MAE sur le jeu de test : 0.1965 | MAE entraînement (fin) : 0.1551 | MAE validation (fin) : 0.1965 | MSE (Perte) : 0.4067
 
 --- Optimiseur : RMSPROP ---
 
 ---- Architecture : 2_layers_300_100_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : TANH / RMSPROP / 2_layers_300_100_neurons
-[TANH / RMSPROP / 2_layers_300_100_neurons] Modèle 1 - Précision sur le jeu de test : 0.9779 | Précision entraînement (fin) : 0.9987 | Précision validation (fin) : 0.9779 | Perte : 0.0889
+[TANH / RMSPROP / 2_layers_300_100_neurons] Modèle 1 - Précision sur le jeu de test : 0.9781 | Précision entraînement (fin) : 0.9988 | Précision validation (fin) : 0.9781 | Perte : 0.0877
 
 --> Entraînement du Modèle 2 (Régression) : TANH / RMSPROP / 2_layers_300_100_neurons
 [TANH / RMSPROP / 2_layers_300_100_neurons] Modèle 2 - MAE sur le jeu de test : 0.3032 | MAE entraînement (fin) : 0.2064 | MAE validation (fin) : 0.3032 | MSE (Perte) : 0.4137
@@ -100,18 +100,18 @@
 ---- Architecture : 3_layers_392_196_98_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : TANH / RMSPROP / 3_layers_392_196_98_neurons
-[TANH / RMSPROP / 3_layers_392_196_98_neurons] Modèle 1 - Précision sur le jeu de test : 0.9765 | Précision entraînement (fin) : 0.9968 | Précision validation (fin) : 0.9765 | Perte : 0.1079
+[TANH / RMSPROP / 3_layers_392_196_98_neurons] Modèle 1 - Précision sur le jeu de test : 0.9789 | Précision entraînement (fin) : 0.9969 | Précision validation (fin) : 0.9789 | Perte : 0.1027
 
 --> Entraînement du Modèle 2 (Régression) : TANH / RMSPROP / 3_layers_392_196_98_neurons
-[TANH / RMSPROP / 3_layers_392_196_98_neurons] Modèle 2 - MAE sur le jeu de test : 0.2109 | MAE entraînement (fin) : 0.1212 | MAE validation (fin) : 0.2109 | MSE (Perte) : 0.3818
+[TANH / RMSPROP / 3_layers_392_196_98_neurons] Modèle 2 - MAE sur le jeu de test : 0.1858 | MAE entraînement (fin) : 0.1234 | MAE validation (fin) : 0.1858 | MSE (Perte) : 0.3416
 
 ---- Architecture : 4_layers_512_256_128_64_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : TANH / RMSPROP / 4_layers_512_256_128_64_neurons
-[TANH / RMSPROP / 4_layers_512_256_128_64_neurons] Modèle 1 - Précision sur le jeu de test : 0.9735 | Précision entraînement (fin) : 0.9947 | Précision validation (fin) : 0.9735 | Perte : 0.1155
+[TANH / RMSPROP / 4_layers_512_256_128_64_neurons] Modèle 1 - Précision sur le jeu de test : 0.9759 | Précision entraînement (fin) : 0.9941 | Précision validation (fin) : 0.9759 | Perte : 0.1078
 
 --> Entraînement du Modèle 2 (Régression) : TANH / RMSPROP / 4_layers_512_256_128_64_neurons
-[TANH / RMSPROP / 4_layers_512_256_128_64_neurons] Modèle 2 - MAE sur le jeu de test : 0.1409 | MAE entraînement (fin) : 0.0958 | MAE validation (fin) : 0.1409 | MSE (Perte) : 0.3614
+[TANH / RMSPROP / 4_layers_512_256_128_64_neurons] Modèle 2 - MAE sur le jeu de test : 0.1534 | MAE entraînement (fin) : 0.0958 | MAE validation (fin) : 0.1534 | MSE (Perte) : 0.3806
 
 =======================================================
        Tests avec fonction d'activation : SIGMOID       
@@ -131,18 +131,18 @@
 ---- Architecture : 3_layers_392_196_98_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : SIGMOID / ADAM / 3_layers_392_196_98_neurons
-[SIGMOID / ADAM / 3_layers_392_196_98_neurons] Modèle 1 - Précision sur le jeu de test : 0.9800 | Précision entraînement (fin) : 0.9959 | Précision validation (fin) : 0.9800 | Perte : 0.0905
+[SIGMOID / ADAM / 3_layers_392_196_98_neurons] Modèle 1 - Précision sur le jeu de test : 0.9799 | Précision entraînement (fin) : 0.9958 | Précision validation (fin) : 0.9799 | Perte : 0.0909
 
 --> Entraînement du Modèle 2 (Régression) : SIGMOID / ADAM / 3_layers_392_196_98_neurons
-[SIGMOID / ADAM / 3_layers_392_196_98_neurons] Modèle 2 - MAE sur le jeu de test : 0.1789 | MAE entraînement (fin) : 0.1232 | MAE validation (fin) : 0.1789 | MSE (Perte) : 0.3695
+[SIGMOID / ADAM / 3_layers_392_196_98_neurons] Modèle 2 - MAE sur le jeu de test : 0.1773 | MAE entraînement (fin) : 0.1230 | MAE validation (fin) : 0.1773 | MSE (Perte) : 0.3654
 
 ---- Architecture : 4_layers_512_256_128_64_neurons ----
 
 --> Entraînement du Modèle 1 (Classification) : SIGMOID / ADAM / 4_layers_512_256_128_64_neurons
-[SIGMOID / ADAM / 4_layers_512_256_128_64_neurons] Modèle 1 - Précision sur le jeu de test : 0.9803 | Précision entraînement (fin) : 0.9939 | Précision validation (fin) : 0.9803 | Perte : 0.0853
+[SIGMOID / ADAM / 4_layers_512_256_128_64_neurons] Modèle 1 - Précision sur le jeu de test : 0.9753 | Précision entraînement (fin) : 0.9937 | Précision validation (fin) : 0.9753 | Perte : 0.1100
 
 --> Entraînement du Modèle 2 (Régression) : SIGMOID / ADAM / 4_layers_512_256_128_64_neurons
-[SIGMOID / ADAM / 4_layers_512_256_128_64_neurons] Modèle 2 - MAE sur le jeu de test : 0.1703 | MAE entraînement (fin) : 0.0991 | MAE validation (fin) : 0.1703 | MSE (Perte) : 0.3367
+[SIGMOID / ADAM / 4_layers_512_256_128_64_neurons] Modèle 2 - MAE sur le jeu de test : 0.1303 | MAE entraînement (fin) : 0.0978 | MAE validation (fin) : 0.1303 | MSE (Perte) : 0.3223
 
 --- Optimiseur : RMSPROP ---
 
@@ -168,7 +168,7 @@
 [SIGMOID / RMSPROP / 4_layers_512_256_128_64_neurons] Modèle 1 - Précision sur le jeu de test : 0.9743 | Précision entraînement (fin) : 0.9909 | Précision validation (fin) : 0.9743 | Perte : 0.1100
 
 --> Entraînement du Modèle 2 (Régression) : SIGMOID / RMSPROP / 4_layers_512_256_128_64_neurons
-[SIGMOID / RMSPROP / 4_layers_512_256_128_64_neurons] Modèle 2 - MAE sur le jeu de test : 0.1588 | MAE entraînement (fin) : 0.1258 | MAE validation (fin) : 0.1588 | MSE (Perte) : 0.4054
+[SIGMOID / RMSPROP / 4_layers_512_256_128_64_neurons] Modèle 2 - MAE sur le jeu de test : 0.1588 | MAE entraînement (fin) : 0.1258 | MAE validation (fin) : 0.1588 | MSE (Perte) : 0.4052
 
 
 Résultats détaillés enregistrés dans 'multi_architecture_test_results.csv'
