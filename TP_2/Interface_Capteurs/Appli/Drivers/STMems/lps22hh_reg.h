@@ -32,12 +32,10 @@ extern "C" {
 
 /** @addtogroup LPS22HH
   * @{
-  *
   */
 
 /** @defgroup  Endianness definitions
   * @{
-  *
   */
 
 #ifndef DRV_BYTE_ORDER
@@ -63,12 +61,10 @@ extern "C" {
 
 /**
   * @}
-  *
   */
 
 /** @defgroup STMicroelectronics sensors common types
   * @{
-  *
   */
 
 #ifndef MEMS_SHARED_TYPES
@@ -105,7 +101,6 @@ typedef struct
   *              write a generic register of the device.
   *              MANDATORY: return 0 -> no Error.
   * @{
-  *
   */
 
 typedef int32_t (*stmdev_write_ptr)(void *handle, uint8_t reg, const uint8_t *buf, uint16_t len);
@@ -125,7 +120,6 @@ typedef struct
 
 /** @defgroup LPS22HH_Infos
   * @{
-  *
   */
 
 #define LPS22HH_I2C_ADD_H 0xBBU
@@ -134,7 +128,6 @@ typedef struct
 
 /**
   * @}
-  *
   */
 
 #define LPS22HH_INTERRUPT_CFG 0x0BU
