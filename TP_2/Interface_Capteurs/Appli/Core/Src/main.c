@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "platform.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,9 +47,7 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 
-LPS22H_Handle_t hlps22h;  // Handle pour le capteur LPS22HH
-LPS22H_Data_t sensor_data; // Structure pour stocker les données
-
+stmdev_ctx_t lps22hh_ctx;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -94,27 +92,28 @@ int main(void)
   MX_USART1_UART_Init();
   SystemIsolation_Config();
   /* USER CODE BEGIN 2 */
-  /* Initialisation du capteur LPS22HH */
-    LPS22H_Config_t lps22h_config =
-    {
-      .hi2c = &hi2c1,
-      .address = LPS22H_I2C_ADDRESS_LOW,  // 0xB9 (SA0 = 0 sur X-NUCLEO-IKS01A3)
-      .odr = LPS22HH_10_Hz,               // 10 Hz (ajustable selon vos besoins)
-      .use_low_noise = false              // Désactive le mode faible bruit (pour économiser de l'énergie)
-    };
+  // Configuration du contexte LPS22HH
+  lps22hh_ctx.write_reg = platform_write;
+  lps22hh_ctx.read_reg = platform_read;
+  lps22hh_ctx.handle = &hi2c1;
+  lps22hh_ctx.mdelay = platform_delay;
 
-    /* Initialiser le capteur */
-      if (LPS22H_Init(&hlps22h, lps22h_config.hi2c, lps22h_config.address, lps22h_config.odr, lps22h_config.use_low_noise) != HAL_OK)
-      {
-    	HAL_UART_Transmit(&huart1, "ERROR: Failed to initialize LPS22H\r\n", 39, 30);
-        while (1)
-        {
-          HAL_Delay(100);
-        }
-      }
+  // Vérification de la présence du capteur
+  uint8_t who_am_i;
+  if (lps22hh_device_id_get(&lps22hh_ctx, &who_am_i) != 0 || who_am_i != LPS22HH_ID)
+  {
+    HAL_UART_Transmit(&huart1, (uint8_t*)"ERROR: LPS22HH not detected\r\n", 28, 100);
+    while (1) { HAL_Delay(100); }
+  }
 
-      uint8_t answer[] = "";
-      int size = 0;
+  // Configuration du capteur (10 Hz, mode normal)
+  lps22hh_data_rate_set(&lps22hh_ctx, LPS22HH_10_Hz);
+  lps22hh_block_data_update_set(&lps22hh_ctx, PROPERTY_ENABLE);
+
+  char msg[64];
+  int size;
+  size = sprintf(msg, "LPS22HH initialized (WHO_AM_I: 0x%02X)\r\n", who_am_i);
+  HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, 100);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -122,18 +121,26 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  /* Lire les données du capteur */
-	      if (LPS22H_ReadData(&hlps22h, &sensor_data) == HAL_OK)
-	      {
-	    	  size = sprintf(answer, "Pression: %.2f hPa, Température: %.2f °C\n", sensor_data.pressure, sensor_data.temperature);
-	    	  HAL_UART_Transmit(&huart1, answer, size, 10);
-	      }
-	      else
-	      {
-	        HAL_UART_Transmit(&huart1, "Failed to fetch data\r\n", 25, 10);
-	      }
+    // Lecture des données brutes
+    uint32_t raw_pressure;
+    int16_t raw_temp;
+    float pressure_hpa, temperature_c;
 
-	      HAL_Delay(100);
+    if (lps22hh_pressure_raw_get(&lps22hh_ctx, &raw_pressure) == 0 &&
+        lps22hh_temperature_raw_get(&lps22hh_ctx, &raw_temp) == 0)
+    {
+      pressure_hpa = lps22hh_from_lsb_to_hpa(raw_pressure);
+      temperature_c = lps22hh_from_lsb_to_celsius(raw_temp);
+
+      size = sprintf(msg, "P: %.2f hPa, T: %.2f C\r\n", pressure_hpa, temperature_c);
+      HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, 100);
+    }
+    else
+    {
+      HAL_UART_Transmit(&huart1, (uint8_t*)"Error reading sensor\r\n", 20, 100);
+    }
+
+    HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
