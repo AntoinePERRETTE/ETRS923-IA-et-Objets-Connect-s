@@ -290,6 +290,22 @@ typedef struct
 #define LPS22HH_RPDS_L 0x18U
 #define LPS22HH_RPDS_H 0x19U
 #define LPS22HH_INT_SOURCE 0x24U
+typedef struct
+{
+#if DRV_BYTE_ORDER == DRV_LITTLE_ENDIAN
+  uint8_t ph : 1;
+  uint8_t pl : 1;
+  uint8_t ia : 1;
+  uint8_t not_used_01 : 4;
+  uint8_t boot_on : 1;
+#elif DRV_BYTE_ORDER == DRV_BIG_ENDIAN
+  uint8_t boot_on : 1;
+  uint8_t not_used_01 : 4;
+  uint8_t ia : 1;
+  uint8_t pl : 1;
+  uint8_t ph : 1;
+#endif
+} lps22hh_int_source_t;
 
 #define LPS22HH_FIFO_STATUS1 0x25U
 #define LPS22HH_FIFO_STATUS2 0x26U
@@ -349,6 +365,9 @@ int32_t lps22hh_write_reg(const stmdev_ctx_t *ctx, uint8_t reg, const uint8_t *d
 float_t lps22hh_from_lsb_to_hpa(uint32_t lsb);
 float_t lps22hh_from_lsb_to_celsius(int16_t lsb);
 
+int32_t lps22hh_block_data_update_set(const stmdev_ctx_t *ctx, uint8_t val);
+int32_t lps22hh_block_data_update_get(const stmdev_ctx_t *ctx, uint8_t *val);
+
 typedef enum
 {
   LPS22HH_POWER_DOWN = 0x00,
@@ -370,9 +389,6 @@ typedef enum
 int32_t lps22hh_data_rate_set(const stmdev_ctx_t *ctx, lps22hh_odr_t val);
 int32_t lps22hh_data_rate_get(const stmdev_ctx_t *ctx, lps22hh_odr_t *val);
 
-int32_t lps22hh_block_data_update_set(const stmdev_ctx_t *ctx, uint8_t val);
-int32_t lps22hh_block_data_update_get(const stmdev_ctx_t *ctx, uint8_t *val);
-
 int32_t lps22hh_pressure_raw_get(const stmdev_ctx_t *ctx, uint32_t *buff);
 int32_t lps22hh_temperature_raw_get(const stmdev_ctx_t *ctx, int16_t *buff);
 
@@ -381,11 +397,11 @@ int32_t lps22hh_device_id_get(const stmdev_ctx_t *ctx, uint8_t *buff);
 int32_t lps22hh_reset_set(const stmdev_ctx_t *ctx, uint8_t val);
 int32_t lps22hh_reset_get(const stmdev_ctx_t *ctx, uint8_t *val);
 
-int32_t lps22hh_pressure_ref_set(const stmdev_ctx_t *ctx, int16_t val);
-int32_t lps22hh_pressure_ref_get(const stmdev_ctx_t *ctx, int16_t *val);
+int32_t lps22hh_auto_increment_set(const stmdev_ctx_t *ctx, uint8_t val);
+int32_t lps22hh_auto_increment_get(const stmdev_ctx_t *ctx, uint8_t *val);
 
-int32_t lps22hh_pressure_offset_set(const stmdev_ctx_t *ctx, int16_t val);
-int32_t lps22hh_pressure_offset_get(const stmdev_ctx_t *ctx, int16_t *val);
+int32_t lps22hh_boot_set(const stmdev_ctx_t *ctx, uint8_t val);
+int32_t lps22hh_boot_get(const stmdev_ctx_t *ctx, uint8_t *val);
 
 typedef struct
 {
