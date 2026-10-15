@@ -108,7 +108,6 @@ int main(void)
 
   // Configuration du capteur (10 Hz, mode normal)
   lps22hh_data_rate_set(&lps22hh_ctx, LPS22HH_10_Hz);
-  lps22hh_block_data_update_set(&lps22hh_ctx, PROPERTY_ENABLE);
 
   char msg[64];
   int size;
