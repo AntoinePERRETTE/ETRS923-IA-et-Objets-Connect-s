@@ -1,0 +1,8 @@
+../Core/Src/myHAL_LPS22H.c:28:16:LPS22H_I2C_Write	3
+../Core/Src/myHAL_LPS22H.c:54:16:LPS22H_I2C_Read	3
+../Core/Src/myHAL_LPS22H.c:76:13:LPS22H_Delay	1
+../Core/Src/myHAL_LPS22H.c:84:19:LPS22H_Init	10
+../Core/Src/myHAL_LPS22H.c:159:19:LPS22H_ReadData	6
+../Core/Src/myHAL_LPS22H.c:191:19:LPS22H_ReadPressure	5
+../Core/Src/myHAL_LPS22H.c:212:19:LPS22H_ReadTemperature	5
+../Core/Src/myHAL_LPS22H.c:233:19:LPS22H_IsDataReady	7
