@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "platform.h"
+#include "lps22df_reg.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,7 +48,7 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 
-stmdev_ctx_t lps22hh_ctx;
+stmdev_ctx_t lps22df_ctx;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -92,26 +93,26 @@ int main(void)
   MX_USART1_UART_Init();
   SystemIsolation_Config();
   /* USER CODE BEGIN 2 */
-  // Configuration du contexte LPS22HH
-  lps22hh_ctx.write_reg = platform_write;
-  lps22hh_ctx.read_reg = platform_read;
-  lps22hh_ctx.handle = &hi2c1;
-  lps22hh_ctx.mdelay = platform_delay;
+  // Configuration du contexte LPS22DF
+  lps22df_ctx.write_reg = platform_write;
+  lps22df_ctx.read_reg = platform_read;
+  lps22df_ctx.handle = &hi2c1;
+  lps22df_ctx.mdelay = platform_delay;
 
   // Vérification de la présence du capteur
-  uint8_t who_am_i;
-  if (lps22hh_device_id_get(&lps22hh_ctx, &who_am_i) != 0 || who_am_i != LPS22HH_ID)
+  lps22df_id_t id;
+  if (lps22df_id_get(&lps22df_ctx, &id) != 0 || id.whoami != LPS22DF_ID)
   {
-    HAL_UART_Transmit(&huart1, (uint8_t*)"ERROR: LPS22HH not detected\r\n", 28, 100);
+    HAL_UART_Transmit(&huart1, (uint8_t*)"ERROR: LPS22DF not detected\r\n", 28, 100);
     while (1) { HAL_Delay(100); }
   }
 
   // Configuration du capteur (10 Hz, mode normal)
-  lps22hh_data_rate_set(&lps22hh_ctx, LPS22HH_10_Hz);
+  lps22df_data_rate_set(&lps22df_ctx, LPS22DF_10_Hz);
 
   char msg[64];
   int size;
-  size = sprintf(msg, "LPS22HH initialized (WHO_AM_I: 0x%02X)\r\n", who_am_i);
+  size = sprintf(msg, "LPS22DF initialized (WHO_AM_I: 0x%02X)\r\n", id.whoami);
   HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, 100);
   /* USER CODE END 2 */
 
@@ -125,11 +126,11 @@ int main(void)
     int16_t raw_temp;
     float pressure_hpa, temperature_c;
 
-    if (lps22hh_pressure_raw_get(&lps22hh_ctx, &raw_pressure) == 0 &&
-        lps22hh_temperature_raw_get(&lps22hh_ctx, &raw_temp) == 0)
+    if (lps22df_pressure_raw_get(&lps22df_ctx, &raw_pressure) == 0 &&
+        lps22df_temperature_raw_get(&lps22df_ctx, &raw_temp) == 0)
     {
-      pressure_hpa = lps22hh_from_lsb_to_hpa(raw_pressure);
-      temperature_c = lps22hh_from_lsb_to_celsius(raw_temp);
+      pressure_hpa = lps22df_from_lsb_to_hpa(raw_pressure);
+      temperature_c = lps22df_from_lsb_to_celsius(raw_temp);
 
       size = sprintf(msg, "P: %.2f hPa, T: %.2f C\r\n", pressure_hpa, temperature_c);
       HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, 100);

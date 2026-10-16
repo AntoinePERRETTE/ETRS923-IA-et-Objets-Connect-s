@@ -8,7 +8,7 @@
 #ifndef PLATFORM_H
 #define PLATFORM_H
 
-#include "lps22hh_reg.h"
+#include "lps22df_reg.h"
 #include "stm32n6xx_hal.h"
 
 // Fonctions de lecture/écriture bas niveau
