@@ -1,5 +1,5 @@
 Drivers/STM32N6xx_HAL_Driver/stm32n6xx_hal_exti.o: \
- /home/perrettea/Documents/IA_et_Objets_Connectés/STM32Cube_FW_N6_V1.4.1/Interface_Capteurs/Drivers/STM32N6xx_HAL_Driver/Src/stm32n6xx_hal_exti.c \
+ /home/perrettea/Documents/IA_et_Objets_Connectés/ETRS923-IA-et-Objets-Connect-s/TP_2/Interface_Capteurs/Drivers/STM32N6xx_HAL_Driver/Src/stm32n6xx_hal_exti.c \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h \
  ../Core/Inc/stm32n6xx_hal_conf.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_rcc.h \

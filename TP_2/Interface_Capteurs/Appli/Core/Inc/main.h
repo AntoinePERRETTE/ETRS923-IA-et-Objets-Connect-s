@@ -41,7 +41,6 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <stdint.h>
-#include "myHAL_LPS22H.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -81,6 +80,12 @@ void Error_Handler(void);
 #define I2C1_SDA_GPIO_Port GPIOC
 #define I2CA_SCL_Pin GPIO_PIN_9
 #define I2CA_SCL_GPIO_Port GPIOH
+#define LED3_Pin GPIO_PIN_0
+#define LED3_GPIO_Port GPIOG
+#define LED2_Pin GPIO_PIN_10
+#define LED2_GPIO_Port GPIOG
+#define LED1_Pin GPIO_PIN_8
+#define LED1_GPIO_Port GPIOG
 
 /* USER CODE BEGIN Private defines */
 
