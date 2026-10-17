@@ -23,4 +23,5 @@
 "./Drivers/STM32N6xx_HAL_Driver/stm32n6xx_hal_uart_ex.o"
 "./Drivers/STMems/lps22df_reg.o"
 "./Drivers/STMems/platform.o"
+"./Drivers/STMems/sht40ad1b_reg.o"
 "./Drivers/STMems/stts22h_reg.o"

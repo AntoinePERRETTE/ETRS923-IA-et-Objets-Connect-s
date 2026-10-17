@@ -31,7 +31,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h \
  ../Drivers/STMems/platform.h ../Drivers/STMems/lps22df_reg.h \
- ../Drivers/STMems/lps22df_reg.h ../Drivers/STMems/stts22h_reg.h
+ ../Drivers/STMems/lps22df_reg.h ../Drivers/STMems/stts22h_reg.h \
+ ../Drivers/STMems/sht40ad1b_reg.h
 ../Core/Inc/main.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h:
 ../Core/Inc/stm32n6xx_hal_conf.h:
@@ -68,3 +69,4 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STMems/lps22df_reg.h:
 ../Drivers/STMems/lps22df_reg.h:
 ../Drivers/STMems/stts22h_reg.h:
+../Drivers/STMems/sht40ad1b_reg.h:

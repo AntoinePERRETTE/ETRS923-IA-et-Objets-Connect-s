@@ -9,6 +9,7 @@
 #include "stm32n6xx_hal.h"
 #include "lps22df_reg.h"
 #include "stts22h_reg.h"
+#include "sht40ad1b_reg.h"
 
 /**
   * @brief  Platform-specific read function for LPS22DF sensor
@@ -62,6 +63,31 @@ int32_t platform_stts22h_write(void *handle, uint8_t reg, const uint8_t *buf, ui
     return platform_I2C_write((I2C_HandleTypeDef*) handle, STTS22H_I2C_ADD_H, reg, buf, len);
 }
 
+/**
+  * @brief  Platform-specific read function for SHT40AD1B sensor
+  * @param  handle: Pointer to I2C handle (I2C_HandleTypeDef*)
+  * @param  reg: Register address to read
+  * @param  buf: Pointer to buffer to store read data
+  * @param  len: Number of bytes to read
+  * @retval 0 if success, -1 if error
+  */
+int32_t platform_sht40ad1b_read(void *handle, uint8_t reg, uint8_t *buf, uint16_t len)
+{
+	return platform_I2C_read((I2C_HandleTypeDef*) handle, SHT40AD1B_I2C_ADDRESS, reg, buf, len);
+}
+
+/**
+  * @brief  Platform-specific write function for SHT40AD1B sensor
+  * @param  handle: Pointer to I2C handle (I2C_HandleTypeDef*)
+  * @param  reg: Register address to write
+  * @param  buf: Pointer to data to write
+  * @param  len: Number of bytes to write
+  * @retval 0 if success, -1 if error
+  */
+int32_t platform_sht40ad1b_write(void *handle, uint8_t reg, const uint8_t *buf, uint16_t len)
+{
+    return platform_I2C_write((I2C_HandleTypeDef*) handle, SHT40AD1B_I2C_ADDRESS, reg, buf, len);
+}
 
 /**
  * @brief	Platform-specific write function on i2c bus
