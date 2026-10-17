@@ -30,7 +30,6 @@ Core/Src/stm32n6xx_it.o: ../Core/Src/stm32n6xx_it.c ../Core/Inc/main.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_pwr_ex.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h \
- ../Core/Inc/myHAL_LPS22H.h ../Core/Inc/lps22hh_reg.h \
  ../Core/Inc/stm32n6xx_it.h
 ../Core/Inc/main.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h:
@@ -64,6 +63,4 @@ Core/Src/stm32n6xx_it.o: ../Core/Src/stm32n6xx_it.c ../Core/Inc/main.h \
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_pwr_ex.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h:
-../Core/Inc/myHAL_LPS22H.h:
-../Core/Inc/lps22hh_reg.h:
 ../Core/Inc/stm32n6xx_it.h:
