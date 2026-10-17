@@ -144,7 +144,7 @@ typedef struct
   */
 
 /** I2C Device Address 8 bit format  **/
-#define SHT40AD1B_I2C_ADDRESS  0x44U
+#define SHT40AD1B_I2C_ADDRESS  0x89U
 
 /** Device Identification (Who am I) **/
 /* Note: No 'Who am I' value available for this component */

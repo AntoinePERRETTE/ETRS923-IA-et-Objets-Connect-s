@@ -27134,7 +27134,7 @@ int32_t platform_sht40ad1b_read(void *handle, uint8_t reg, uint8_t *buf, uint16_
 3400bf9c:	893b      	ldrh	r3, [r7, #8]
 3400bf9e:	9300      	str	r3, [sp, #0]
 3400bfa0:	687b      	ldr	r3, [r7, #4]
-3400bfa2:	2144      	movs	r1, #68	@ 0x44
+3400bfa2:	2189      	movs	r1, #137	@ 0x89
 3400bfa4:	68f8      	ldr	r0, [r7, #12]
 3400bfa6:	f000 f83e 	bl	3400c026 <platform_I2C_read>
 3400bfaa:	4603      	mov	r3, r0
@@ -27166,7 +27166,7 @@ int32_t platform_sht40ad1b_write(void *handle, uint8_t reg, const uint8_t *buf, 
 3400bfca:	893b      	ldrh	r3, [r7, #8]
 3400bfcc:	9300      	str	r3, [sp, #0]
 3400bfce:	687b      	ldr	r3, [r7, #4]
-3400bfd0:	2144      	movs	r1, #68	@ 0x44
+3400bfd0:	2189      	movs	r1, #137	@ 0x89
 3400bfd2:	68f8      	ldr	r0, [r7, #12]
 3400bfd4:	f000 f805 	bl	3400bfe2 <platform_I2C_write>
 3400bfd8:	4603      	mov	r3, r0
