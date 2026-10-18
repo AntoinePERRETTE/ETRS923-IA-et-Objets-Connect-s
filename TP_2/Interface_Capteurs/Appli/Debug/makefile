@@ -64,8 +64,8 @@ all: main-build
 main-build: Interface_Capteurs_Appli.elf secondary-outputs
 
 # Tool invocations
-Interface_Capteurs_Appli.elf Interface_Capteurs_Appli.map: $(OBJS) $(USER_OBJS) /home/perrettea/Documents/IA_et_Objets_Connectés/ETRS923-IA-et-Objets-Connect-s/TP_2/Interface_Capteurs/Appli/STM32N657X0HXQ_LRUN.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Interface_Capteurs_Appli.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m55 -T"/home/perrettea/Documents/IA_et_Objets_Connectés/ETRS923-IA-et-Objets-Connect-s/TP_2/Interface_Capteurs/Appli/STM32N657X0HXQ_LRUN.ld" --specs=nosys.specs -Wl,-Map="Interface_Capteurs_Appli.map" -Wl,--gc-sections -static -Wl,--cmse-implib -Wl,--out-implib=./secure_nsclib.o --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Interface_Capteurs_Appli.elf Interface_Capteurs_Appli.map: $(OBJS) $(USER_OBJS) /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Interface_Capteurs/Appli/STM32N657X0HXQ_LRUN.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Interface_Capteurs_Appli.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m55 -T"/home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Interface_Capteurs/Appli/STM32N657X0HXQ_LRUN.ld" --specs=nosys.specs -Wl,-Map="Interface_Capteurs_Appli.map" -Wl,--gc-sections -static -Wl,--cmse-implib -Wl,--out-implib=./secure_nsclib.o --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

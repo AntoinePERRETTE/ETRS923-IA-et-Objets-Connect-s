@@ -1,5 +1,5 @@
 Drivers/STM32N6xx_HAL_Driver/stm32n6xx_hal_rcc_ex.o: \
- /home/perrettea/Documents/IA_et_Objets_Connectés/STM32Cube_FW_N6_V1.4.1/LED_BLink/Drivers/STM32N6xx_HAL_Driver/Src/stm32n6xx_hal_rcc_ex.c \
+ /home/perrettea/Documents/IA_et_Objets_Connectés/ETRS923-IA-et-Objets-Connect-s/TP_2/LED_BLink/Drivers/STM32N6xx_HAL_Driver/Src/stm32n6xx_hal_rcc_ex.c \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h \
  ../Inc/stm32n6xx_hal_conf.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_rcc.h \
