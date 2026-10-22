@@ -27,9 +27,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "tx_api.h"
-#include "nx_api.h"
-#include "nx_icmp.h"
-#include "nx_dhcp.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
