@@ -30,12 +30,13 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "main.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-
+extern NX_IP NetXDuoEthIpInstance;
+extern UART_HandleTypeDef hlpuart1;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
