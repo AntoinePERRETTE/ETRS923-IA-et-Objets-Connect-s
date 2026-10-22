@@ -263,7 +263,30 @@ static VOID App_Main_Thread_Entry (ULONG thread_input)
   }
 
   /* USER CODE BEGIN Nx_App_Thread_Entry 2 */
+  while (1)
+  {
+    UINT status;
+    ULONG ping_address = NX_IP(8, 8, 8, 8);
+    ULONG received_packets = 0;
+    ULONG sent_packets = 0;
+    ULONG round_trip_time = 0;
+    ULONG min_round_trip = 0;
+    ULONG max_round_trip = 0;
 
+    status = nx_icmp_ping(&NetXDuoEthIpInstance, ping_address, 1000, 5, &sent_packets, &received_packets, &round_trip_time, &min_round_trip, &max_round_trip);
+    
+    if (status == NX_SUCCESS)
+    {
+      printf("Ping to 8.8.8.8: Sent=%lu, Received=%lu, Avg RTT=%lu ms, Min=%lu ms, Max=%lu ms\n", 
+             sent_packets, received_packets, round_trip_time, min_round_trip, max_round_trip);
+    }
+    else
+    {
+      printf("Ping failed with status: %u\n", status);
+    }
+    
+    tx_thread_sleep(100);
+  }
   /* USER CODE END Nx_App_Thread_Entry 2 */
 
 }
