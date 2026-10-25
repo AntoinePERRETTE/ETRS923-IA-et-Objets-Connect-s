@@ -208,39 +208,39 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
-  if(huart->Instance==LPUART1)
+  if(huart->Instance==USART1)
   {
-    /* USER CODE BEGIN LPUART1_MspInit 0 */
+    /* USER CODE BEGIN USART1_MspInit 0 */
 
-    /* USER CODE END LPUART1_MspInit 0 */
+    /* USER CODE END USART1_MspInit 0 */
 
   /** Initializes the peripherals clock
   */
-    PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LPUART1;
-    PeriphClkInitStruct.Lpuart1ClockSelection = RCC_LPUART1CLKSOURCE_PCLK4;
+    PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART1;
+    PeriphClkInitStruct.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
     {
       Error_Handler();
     }
 
     /* Peripheral clock enable */
-    __HAL_RCC_LPUART1_CLK_ENABLE();
+    __HAL_RCC_USART1_CLK_ENABLE();
 
     __HAL_RCC_GPIOE_CLK_ENABLE();
-    /**LPUART1 GPIO Configuration
-    PE5     ------> LPUART1_TX
-    PE6     ------> LPUART1_RX
+    /**USART1 GPIO Configuration
+    PE5     ------> USART1_TX
+    PE6     ------> USART1_RX
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_5|VCP_RX_Pin;
+    GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    GPIO_InitStruct.Alternate = GPIO_AF3_LPUART1;
+    GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
     HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
-    /* USER CODE BEGIN LPUART1_MspInit 1 */
+    /* USER CODE BEGIN USART1_MspInit 1 */
 
-    /* USER CODE END LPUART1_MspInit 1 */
+    /* USER CODE END USART1_MspInit 1 */
 
   }
 
@@ -254,23 +254,23 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
   */
 void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
 {
-  if(huart->Instance==LPUART1)
+  if(huart->Instance==USART1)
   {
-    /* USER CODE BEGIN LPUART1_MspDeInit 0 */
+    /* USER CODE BEGIN USART1_MspDeInit 0 */
 
-    /* USER CODE END LPUART1_MspDeInit 0 */
+    /* USER CODE END USART1_MspDeInit 0 */
     /* Peripheral clock disable */
-    __HAL_RCC_LPUART1_CLK_DISABLE();
+    __HAL_RCC_USART1_CLK_DISABLE();
 
-    /**LPUART1 GPIO Configuration
-    PE5     ------> LPUART1_TX
-    PE6     ------> LPUART1_RX
+    /**USART1 GPIO Configuration
+    PE5     ------> USART1_TX
+    PE6     ------> USART1_RX
     */
-    HAL_GPIO_DeInit(GPIOE, GPIO_PIN_5|VCP_RX_Pin);
+    HAL_GPIO_DeInit(GPIOE, GPIO_PIN_5|GPIO_PIN_6);
 
-    /* USER CODE BEGIN LPUART1_MspDeInit 1 */
+    /* USER CODE BEGIN USART1_MspDeInit 1 */
 
-    /* USER CODE END LPUART1_MspDeInit 1 */
+    /* USER CODE END USART1_MspDeInit 1 */
   }
 
 }
