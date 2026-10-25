@@ -10,7 +10,15 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include NetXDuo/App/subdir.mk
+-include Middlewares/ST/threadx/Core/subdir.mk
+-include Middlewares/ST/netxduo/NX\ Core/subdir.mk
+-include Middlewares/ST/netxduo/LAN8742\ Phy\ Interface/subdir.mk
+-include Middlewares/ST/netxduo/Ethernet\ Interface/subdir.mk
+-include Middlewares/ST/netxduo/Addons\ DNS/subdir.mk
+-include Middlewares/ST/netxduo/Addons\ DHCP\ Client/subdir.mk
+-include Drivers/STMems/subdir.mk
 -include Drivers/STM32N6xx_HAL_Driver/subdir.mk
+-include Drivers/BSP/Components/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include AZURE_RTOS/App/subdir.mk
@@ -66,7 +74,7 @@ main-build: Réseau_Internet_Appli.elf secondary-outputs
 
 # Tool invocations
 Réseau_Internet_Appli.elf Réseau_Internet_Appli.map: $(OBJS) $(USER_OBJS) /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/STM32N657X0HXQ_LRUN.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Réseau_Internet_Appli.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m55 -T"/home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/STM32N657X0HXQ_LRUN.ld" --specs=nosys.specs -Wl,-Map="Réseau_Internet_Appli.map" -Wl,--gc-sections -static -Wl,--cmse-implib -Wl,--out-implib=./secure_nsclib.o --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "Réseau_Internet_Appli.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m55 -T"/home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/STM32N657X0HXQ_LRUN.ld" --specs=nosys.specs -Wl,-Map="Réseau_Internet_Appli.map" -Wl,--gc-sections -static -Wl,--cmse-implib -Wl,--out-implib=./secure_nsclib.o --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

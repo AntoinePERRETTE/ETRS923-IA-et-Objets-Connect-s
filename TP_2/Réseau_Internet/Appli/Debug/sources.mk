@@ -26,6 +26,14 @@ SUBDIRS := \
 AZURE_RTOS/App \
 Core/Src \
 Core/Startup \
+Drivers/BSP/Components \
 Drivers/STM32N6xx_HAL_Driver \
+Drivers/STMems \
+Middlewares/ST/netxduo/Addons\ DHCP\ Client \
+Middlewares/ST/netxduo/Addons\ DNS \
+Middlewares/ST/netxduo/Ethernet\ Interface \
+Middlewares/ST/netxduo/LAN8742\ Phy\ Interface \
+Middlewares/ST/netxduo/NX\ Core \
+Middlewares/ST/threadx/Core \
 NetXDuo/App \
 
