@@ -13,9 +13,9 @@
 void SENSORS_startMeasure(void);
 void SENSORS_Init(void);
 
-void SENSORS_LPS22DF_Init(void);
-void SENSORS_STTS22H_Init(void);
-void SENSORS_SHT40AD1B_Init(void);
+static void SENSORS_LPS22DF_Init(void);
+static void SENSORS_STTS22H_Init(void);
+static void SENSORS_SHT40AD1B_Init(void);
 
 void SENSORS_LPS22DF_dataGet(void);
 void SENSORS_STTS22H_dataGet(void);

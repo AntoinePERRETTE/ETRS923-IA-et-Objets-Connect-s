@@ -45,6 +45,7 @@ AZURE_RTOS/App/app_azure_rtos.o: ../AZURE_RTOS/App/app_azure_rtos.c \
  /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/lps22df_reg.h \
  /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/stts22h_reg.h \
  /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/sht40ad1b_reg.h \
+ ../Core/Inc/shell.h ../Core/Inc/main.h \
  ../AZURE_RTOS/App/app_azure_rtos_config.h ../NetXDuo/App/app_netxduo.h \
  ../../Middlewares/ST/netxduo/common/inc/nx_api.h \
  ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc/nx_port.h \
@@ -101,6 +102,8 @@ AZURE_RTOS/App/app_azure_rtos.o: ../AZURE_RTOS/App/app_azure_rtos.c \
 /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/lps22df_reg.h:
 /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/stts22h_reg.h:
 /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/sht40ad1b_reg.h:
+../Core/Inc/shell.h:
+../Core/Inc/main.h:
 ../AZURE_RTOS/App/app_azure_rtos_config.h:
 ../NetXDuo/App/app_netxduo.h:
 ../../Middlewares/ST/netxduo/common/inc/nx_api.h:

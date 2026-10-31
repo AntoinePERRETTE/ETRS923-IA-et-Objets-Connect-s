@@ -44,7 +44,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/app_threadx.h \
  /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/lps22df_reg.h \
  /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/stts22h_reg.h \
  /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/sht40ad1b_reg.h \
- ../Core/Inc/main.h
+ ../Core/Inc/shell.h ../Core/Inc/main.h ../Core/Inc/main.h
 ../Core/Inc/app_threadx.h:
 ../../Middlewares/ST/threadx/common/inc/tx_api.h:
 ../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc/tx_port.h:
@@ -92,4 +92,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/app_threadx.h \
 /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/lps22df_reg.h:
 /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/stts22h_reg.h:
 /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/sht40ad1b_reg.h:
+../Core/Inc/shell.h:
+../Core/Inc/main.h:
 ../Core/Inc/main.h:

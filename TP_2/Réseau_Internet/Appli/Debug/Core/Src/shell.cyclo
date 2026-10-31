@@ -1,0 +1,4 @@
+../Core/Src/shell.c:41:6:SHELL_Init	1
+../Core/Src/shell.c:51:6:SHELL_Task	9
+../Core/Src/shell.c:131:13:SHELL_PrintPrompt	1
+../Core/Src/shell.c:142:13:SHELL_ProcessCommand	1
