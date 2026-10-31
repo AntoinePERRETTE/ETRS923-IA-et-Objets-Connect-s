@@ -31,6 +31,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "sensor_task.h"
+#include "shell.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -47,6 +48,7 @@
 
 /* USER CODE BEGIN PD */
 #define SENSOR_THREAD_STACK_SIZE 1024
+#define SHELL_THREAD_STACK_SIZE 1024
 /* USER CODE END PD */
 
 /* Main thread defines -------------------------------------------------------*/
@@ -65,6 +67,7 @@ void MX_ThreadX_Init(void);
 
 /* USER CODE BEGIN EFP */
 void sensor_thread_entry(ULONG thread_input);
+void SHELL_Task(ULONG thread_input);
 /* USER CODE END EFP */
 
 /* USER CODE BEGIN 1 */

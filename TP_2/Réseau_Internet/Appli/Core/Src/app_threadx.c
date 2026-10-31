@@ -1,21 +1,21 @@
 /* USER CODE BEGIN Header */
 /**
- ******************************************************************************
- * @file    app_threadx.c
- * @author  MCD Application Team
- * @brief   ThreadX applicative file
- ******************************************************************************
- * @attention
- *
- * Copyright (c) 2026 STMicroelectronics.
- * All rights reserved.
- *
- * This software is licensed under terms that can be found in the LICENSE file
- * in the root directory of this software component.
- * If no LICENSE file comes with this software, it is provided AS-IS.
- *
- ******************************************************************************
- */
+  ******************************************************************************
+  * @file    app_threadx.c
+  * @author  MCD Application Team
+  * @brief   ThreadX applicative file
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2026 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
@@ -45,6 +45,9 @@
 /* USER CODE BEGIN PV */
 TX_THREAD sensor_thread;
 ULONG sensor_thread_stack[SENSOR_THREAD_STACK_SIZE / sizeof(ULONG)];
+
+TX_THREAD shell_thread;
+ULONG shell_thread_stack[SHELL_THREAD_STACK_SIZE / sizeof(ULONG)];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -54,13 +57,10 @@ void sensor_thread_entry(ULONG thread_input) {
 
 	while (1) {
 		//SENSORS_startMeasure();
-		SENSORS_LPS22DF_dataGet();
-
-		SENSORS_STTS22H_dataGet();
-
-		tx_thread_sleep(5);
-
-		SENSORS_SHT40AD1B_dataGet();
+		//SENSORS_LPS22DF_dataGet();
+		//SENSORS_STTS22H_dataGet();
+		//tx_thread_sleep(5);
+		//SENSORS_SHT40AD1B_dataGet();
 		tx_thread_sleep(100);	//100 ticks = 1 second
 	}
 }
@@ -85,8 +85,26 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
 			0,
 			sensor_thread_stack,
 			SENSOR_THREAD_STACK_SIZE,
-			5,  // Priorité (ex: 5)
-			5,  // Priorité préemptive
+			5,  // Priorit\u00e9 (ex: 5)
+			5,  // Priorit\u00e9 pr\u00e9emptive
+			TX_NO_TIME_SLICE,
+			TX_AUTO_START
+	);
+	
+	if (ret != TX_SUCCESS)
+	{
+		return ret;
+	}
+	
+	ret = tx_thread_create(
+			&shell_thread,
+			"Shell Thread",
+			SHELL_Task,
+			0,
+			shell_thread_stack,
+			SHELL_THREAD_STACK_SIZE,
+			4,  // Priority (lower than sensor thread)
+			4,  // Preemptive priority
 			TX_NO_TIME_SLICE,
 			TX_AUTO_START
 	);
