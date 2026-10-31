@@ -50,8 +50,17 @@ ULONG sensor_thread_stack[SENSOR_THREAD_STACK_SIZE / sizeof(ULONG)];
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
 void sensor_thread_entry(ULONG thread_input) {
+	SENSORS_Init();
+
 	while (1) {
-		read_sensors();	//application routine to read all sensors
+		//SENSORS_startMeasure();
+		SENSORS_LPS22DF_dataGet();
+
+		SENSORS_STTS22H_dataGet();
+
+		tx_thread_sleep(5);
+
+		SENSORS_SHT40AD1B_dataGet();
 		tx_thread_sleep(100);	//100 ticks = 1 second
 	}
 }

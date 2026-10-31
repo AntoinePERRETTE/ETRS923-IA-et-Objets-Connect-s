@@ -1,1 +1,8 @@
-../Core/Src/sensor_task.c:10:6:read_sensors	120	static
+../Core/Src/sensor_task.c:19:6:SENSORS_startMeasure	32	static
+../Core/Src/sensor_task.c:63:6:SENSORS_Init	8	static
+../Core/Src/sensor_task.c:69:13:SENSORS_LPS22DF_Init	16	static
+../Core/Src/sensor_task.c:94:13:SENSORS_STTS22H_Init	16	static
+../Core/Src/sensor_task.c:121:13:SENSORS_SHT40AD1B_Init	4	static
+../Core/Src/sensor_task.c:129:6:SENSORS_LPS22DF_dataGet	24	static
+../Core/Src/sensor_task.c:148:6:SENSORS_STTS22H_dataGet	16	static
+../Core/Src/sensor_task.c:166:6:SENSORS_SHT40AD1B_dataGet	16	static
