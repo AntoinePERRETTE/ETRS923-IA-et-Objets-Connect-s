@@ -21,6 +21,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "shell.h"
 #include "main.h"
+#include "sensor_task.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -30,8 +31,7 @@ extern UART_HandleTypeDef huart1;
 /* Private function prototypes -----------------------------------------------*/
 static void SHELL_PrintPrompt(void);
 static void SHELL_ProcessCommand(char *buffer, uint16_t length);
-
-/* Private defines -----------------------------------------------------------*/
+static void SHELL_PrintSensorsData(void);
 
 /**
   * @brief  Initialize the shell
@@ -40,7 +40,7 @@ static void SHELL_ProcessCommand(char *buffer, uint16_t length);
   */
 void SHELL_Init(void)
 {
-  /* Nothing to initialize for now */
+  SENSORS_Init();
 }
 
 /**
@@ -54,65 +54,52 @@ void SHELL_Task(ULONG thread_input)
   uint16_t buffer_index = 0;
   uint8_t received_char;
 
-  (void)thread_input; /* Unused parameter */
+  (void)thread_input;
 
-  /* Print welcome message */
   char welcome_msg[] = "\r\n=== STM32 Shell Console ===\r\n";
   HAL_UART_Transmit(&huart1, (uint8_t*)welcome_msg, strlen(welcome_msg), HAL_MAX_DELAY);
 
   while (1)
   {
-    /* Print prompt */
     SHELL_PrintPrompt();
 
-    /* Read characters until newline or buffer full */
     buffer_index = 0;
     while (1)
     {
-      /* Wait for a character */
       if (HAL_UART_Receive(&huart1, &received_char, 1, HAL_MAX_DELAY) == HAL_OK)
       {
-        /* Echo the character */
         HAL_UART_Transmit(&huart1, &received_char, 1, HAL_MAX_DELAY);
 
-        /* Check for backspace */
         if (received_char == '\b' || received_char == 127)
         {
           if (buffer_index > 0)
           {
             buffer_index--;
-            /* Send backspace, space, backspace to erase character */
             uint8_t backspace_seq[] = "\b \b";
             HAL_UART_Transmit(&huart1, backspace_seq, 3, HAL_MAX_DELAY);
           }
         }
-        /* Check for newline or carriage return */
         else if (received_char == '\r' || received_char == '\n')
         {
           if (buffer_index > 0)
           {
             buffer[buffer_index] = '\0';
-            /* Print newline */
             HAL_UART_Transmit(&huart1, (uint8_t*)"\r\n", 2, HAL_MAX_DELAY);
-            /* Process the command */
             SHELL_ProcessCommand(buffer, buffer_index);
             break;
           }
           else
           {
-            /* Just print a new prompt */
             HAL_UART_Transmit(&huart1, (uint8_t*)"\r\n", 2, HAL_MAX_DELAY);
             break;
           }
         }
-        /* Check for buffer overflow */
         else if (buffer_index < SHELL_BUFFER_SIZE - 1)
         {
           buffer[buffer_index++] = received_char;
         }
         else
         {
-          /* Buffer full, send newline and process */
           buffer[buffer_index] = '\0';
           HAL_UART_Transmit(&huart1, (uint8_t*)"\r\n", 2, HAL_MAX_DELAY);
           SHELL_ProcessCommand(buffer, buffer_index);
@@ -141,12 +128,36 @@ static void SHELL_PrintPrompt(void)
   */
 static void SHELL_ProcessCommand(char *buffer, uint16_t length)
 {
-  (void)length; /* Unused parameter */
+  (void)length;
 
-  
-  /* For now, we just acknowledge the input */
-//  char echo_msg[] = "Echo: ";
-//  HAL_UART_Transmit(&huart1, (uint8_t*)echo_msg, strlen(echo_msg), HAL_MAX_DELAY);
-//  HAL_UART_Transmit(&huart1, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
-//  HAL_UART_Transmit(&huart1, (uint8_t*)"\r\n", 2, HAL_MAX_DELAY);
+  if (strcmp(buffer, "get-sensors-data") == 0)
+  {
+    SHELL_PrintSensorsData();
+  }
+}
+
+/**
+  * @brief  Print sensor data
+  * @param  None
+  * @retval None
+  */
+static void SHELL_PrintSensorsData(void)
+{
+  char msg[64];
+  int size;
+
+  SENSORS_dataGet();
+
+  float temperature = SENSORS_getTemperature();
+  float humidity = SENSORS_getHumidity();
+  float pressure = SENSORS_getPressure();
+
+  size = sprintf(msg, "Temperature : %.2f \u00b0C\r\n", temperature);
+  HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
+
+  size = sprintf(msg, "Humidity : %.2f %%\r\n", humidity);
+  HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
+
+  size = sprintf(msg, "Pressure : %.2f hPa\r\n", pressure);
+  HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
 }
