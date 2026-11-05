@@ -20,7 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "ethernet_task.h"
-#include "../NetXDuo/App/netxduo_config.h"
+#include "netxduo_config.h"
 #include "tx_api.h"
 #include "nx_icmpv4.h"
 #include "main.h"

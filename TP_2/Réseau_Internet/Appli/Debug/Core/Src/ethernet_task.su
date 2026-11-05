@@ -1,0 +1,5 @@
+../Core/Src/ethernet_task.c:41:6:ETHERNET_PingTask	88	static
+../Core/Src/ethernet_task.c:85:13:ETHERNET_WaitForDHCP	16	static
+../Core/Src/ethernet_task.c:103:13:ETHERNET_PrintIPAddress	120	static
+../Core/Src/ethernet_task.c:127:13:ETHERNET_Ping	32	static
+../Core/Src/ethernet_task.c:147:6:ETHERNET_Init	4	static
