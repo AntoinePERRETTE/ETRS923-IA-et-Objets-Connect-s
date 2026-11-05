@@ -32,6 +32,7 @@
 /* USER CODE BEGIN Includes */
 #include "sensor_task.h"
 #include "shell.h"
+#include "ethernet_task.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -49,6 +50,7 @@
 /* USER CODE BEGIN PD */
 #define SENSOR_THREAD_STACK_SIZE 1024
 #define SHELL_THREAD_STACK_SIZE 1024
+#define ETHERNET_THREAD_STACK_SIZE 2048
 /* USER CODE END PD */
 
 /* Main thread defines -------------------------------------------------------*/
@@ -66,6 +68,8 @@ UINT App_ThreadX_Init(VOID *memory_ptr);
 void MX_ThreadX_Init(void);
 
 /* USER CODE BEGIN EFP */
+void SHELL_Task(ULONG thread_input);
+void ETHERNET_PingTask(ULONG thread_input);
 /* USER CODE END EFP */
 
 /* USER CODE BEGIN 1 */
