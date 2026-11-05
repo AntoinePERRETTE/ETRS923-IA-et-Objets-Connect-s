@@ -108,6 +108,8 @@ void SENSORS_dataGet(void) {
 		HAL_UART_Transmit(&huart1, (uint8_t*)"Error while reading STTS22H data\r\n", 35, 100);
 	}
 
+	tx_thread_sleep(5);
+
 	if (sht40ad1b_data_get(&sht40ad1b_ctx, SENSORS_Data.sht40ad1b_data) != 0) {
 		HAL_UART_Transmit(&huart1, (uint8_t*)"Error while reading SHT40AD1B\r\n", 31, 100);
 	}

@@ -43,9 +43,6 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-TX_THREAD sensor_thread;
-ULONG sensor_thread_stack[SENSOR_THREAD_STACK_SIZE / sizeof(ULONG)];
-
 TX_THREAD shell_thread;
 ULONG shell_thread_stack[SHELL_THREAD_STACK_SIZE / sizeof(ULONG)];
 
@@ -55,18 +52,7 @@ ULONG ethernet_thread_stack[ETHERNET_THREAD_STACK_SIZE / sizeof(ULONG)];
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
-void sensor_thread_entry(ULONG thread_input) {
-	SENSORS_Init();
 
-	while (1) {
-		//SENSORS_startMeasure();
-		//SENSORS_LPS22DF_dataGet();
-		//SENSORS_STTS22H_dataGet();
-		//tx_thread_sleep(5);
-		//SENSORS_SHT40AD1B_dataGet();
-		tx_thread_sleep(100);	//100 ticks = 1 second
-	}
-}
 /* USER CODE END PFP */
 
 /**
@@ -111,24 +97,7 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
 			TX_NO_TIME_SLICE,
 			TX_AUTO_START
 	);
-	
-	if (ret != TX_SUCCESS)
-	{
-		return ret;
-	}
-	
-	ret = tx_thread_create(
-			&sensor_thread,
-			"Sensor Thread",
-			sensor_thread_entry,
-			0,
-			sensor_thread_stack,
-			SENSOR_THREAD_STACK_SIZE,
-			5,  // Priorite (ex: 5)
-			5,  // Priorite preemptive
-			TX_NO_TIME_SLICE,
-			TX_AUTO_START
-	);
+
   /* USER CODE END App_ThreadX_Init */
 
   return ret;

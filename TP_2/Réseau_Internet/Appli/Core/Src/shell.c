@@ -56,6 +56,8 @@ void SHELL_Task(ULONG thread_input)
 
   (void)thread_input;
 
+  SHELL_Init();
+
   char welcome_msg[] = "\r\n=== STM32 Shell Console ===\r\n";
   HAL_UART_Transmit(&huart1, (uint8_t*)welcome_msg, strlen(welcome_msg), HAL_MAX_DELAY);
 

@@ -1,5 +1,19 @@
-Core/Src/stm32n6xx_hal_timebase_tim.o: \
- ../Core/Src/stm32n6xx_hal_timebase_tim.c \
+Core/Src/ethernet_task.o: ../Core/Src/ethernet_task.c \
+ ../Core/Inc/ethernet_task.h \
+ ../../Middlewares/ST/threadx/common/inc/tx_api.h \
+ ../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc/tx_port.h \
+ ../Core/Inc/tx_user.h ../NetXDuo/App/netxduo_config.h \
+ ../../Middlewares/ST/netxduo/common/inc/nx_api.h \
+ ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc/nx_port.h \
+ ../NetXDuo/App/nx_user.h \
+ ../../Middlewares/ST/threadx/common/inc/tx_trace.h \
+ ../../Middlewares/ST/netxduo/addons/dhcp/nxd_dhcp_client.h \
+ ../../Middlewares/ST/netxduo/common/inc/nx_udp.h \
+ ../../Middlewares/ST/netxduo/common/inc/nx_api.h \
+ ../../Middlewares/ST/netxduo/common/inc/nx_ip.h \
+ ../../Middlewares/ST/netxduo/common/inc/nx_ipv4.h \
+ /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/NetXDuo/../NetXDuo/App/netxduo_config.h \
+ ../../Middlewares/ST/netxduo/common/inc/nx_icmpv4.h ../Core/Inc/main.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h \
  ../Core/Inc/stm32n6xx_hal_conf.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_rcc.h \
@@ -35,6 +49,23 @@ Core/Src/stm32n6xx_hal_timebase_tim.o: \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h
+../Core/Inc/ethernet_task.h:
+../../Middlewares/ST/threadx/common/inc/tx_api.h:
+../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc/tx_port.h:
+../Core/Inc/tx_user.h:
+../NetXDuo/App/netxduo_config.h:
+../../Middlewares/ST/netxduo/common/inc/nx_api.h:
+../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc/nx_port.h:
+../NetXDuo/App/nx_user.h:
+../../Middlewares/ST/threadx/common/inc/tx_trace.h:
+../../Middlewares/ST/netxduo/addons/dhcp/nxd_dhcp_client.h:
+../../Middlewares/ST/netxduo/common/inc/nx_udp.h:
+../../Middlewares/ST/netxduo/common/inc/nx_api.h:
+../../Middlewares/ST/netxduo/common/inc/nx_ip.h:
+../../Middlewares/ST/netxduo/common/inc/nx_ipv4.h:
+/home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/NetXDuo/../NetXDuo/App/netxduo_config.h:
+../../Middlewares/ST/netxduo/common/inc/nx_icmpv4.h:
+../Core/Inc/main.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h:
 ../Core/Inc/stm32n6xx_hal_conf.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_rcc.h:

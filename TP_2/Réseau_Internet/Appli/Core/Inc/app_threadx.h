@@ -30,7 +30,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "sensor_task.h"
 #include "shell.h"
 #include "ethernet_task.h"
 /* USER CODE END Includes */
@@ -48,7 +47,6 @@
 /* Private defines -----------------------------------------------------------*/
 
 /* USER CODE BEGIN PD */
-#define SENSOR_THREAD_STACK_SIZE 1024
 #define SHELL_THREAD_STACK_SIZE 1024
 #define ETHERNET_THREAD_STACK_SIZE 2048
 /* USER CODE END PD */
