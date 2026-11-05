@@ -12,53 +12,9 @@ static char msg[64];
 
 static struct {
 	float lps22df_data[2];	// [0]: pressure; [1]: temperature
-	float stts22h_data;
+	float stts22h_data;		// temperature
 	float sht40ad1b_data[2];	// [0]: humidity; [1]: temperature
 } SENSORS_Data;
-
-void SENSORS_startMeasure(void) {
-	uint8_t flag;
-	uint32_t pressure;
-	int16_t temperature;
-
-	if (lps22df_pressure_raw_get(&lps22df_ctx, &pressure) == 0 &&
-			lps22df_temperature_raw_get(&lps22df_ctx, &temperature) == 0)
-	{
-		SENSORS_Data.lps22df_data[0] = lps22df_from_lsb_to_hPa(pressure);
-		SENSORS_Data.lps22df_data[1] = lps22df_from_lsb_to_celsius(temperature);
-
-		size = sprintf(msg, "LPS22DF -> P: %.2f hPa, T: %.2f °C\r\n", SENSORS_Data.lps22df_data[0], SENSORS_Data.lps22df_data[1]);
-		HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, 100);
-	}
-	else
-	{
-		HAL_UART_Transmit(&huart1, (uint8_t*)"Error while reading LPS22DF data\r\n", 35, 100);
-	}
-
-	tx_thread_sleep(5);
-	stts22h_temp_flag_data_ready_get(&stts22h_ctx, &flag);
-
-	if (!flag) {
-		HAL_UART_Transmit(&huart1, (uint8_t*)"STTS22H data was not ready for reading\r\n", 42, 100);
-	} else if (stts22h_temperature_raw_get(&stts22h_ctx, &temperature) == 0){
-		SENSORS_Data.stts22h_data = stts22h_from_lsb_to_celsius(temperature);
-
-		size = sprintf(msg, "STTS22H -> T: %.2f °C\r\n", SENSORS_Data.stts22h_data);
-
-		HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, 100);
-	} else {
-		HAL_UART_Transmit(&huart1, (uint8_t*)"Error while reading STTS22H data\r\n", 35, 100);
-	}
-
-	tx_thread_sleep(5);
-
-	if (sht40ad1b_data_get(&sht40ad1b_ctx, SENSORS_Data.sht40ad1b_data) == 0) {
-		size = sprintf(msg, "SHT40AD1B -> H: %.3f, T: %.3f °C %%\r\n", SENSORS_Data.sht40ad1b_data[0], SENSORS_Data.sht40ad1b_data[1]);
-		HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, 100);
-	} else {
-		HAL_UART_Transmit(&huart1, (uint8_t*)"Error while reading SHT40AD1B\r\n", 31, 100);
-	}
-}
 
 void SENSORS_Init(void){
 	SENSORS_LPS22DF_Init();
@@ -126,7 +82,7 @@ static void SENSORS_SHT40AD1B_Init(void) {
 	sht40ad1b_ctx.handle = &hi2c1;
 }
 
-void SENSORS_LPS22DF_dataGet(void) {
+void SENSORS_dataGet(void) {
 	uint32_t pressure;
 	int16_t temperature;
 
@@ -135,39 +91,42 @@ void SENSORS_LPS22DF_dataGet(void) {
 	{
 		SENSORS_Data.lps22df_data[0] = lps22df_from_lsb_to_hPa(pressure);
 		SENSORS_Data.lps22df_data[1] = lps22df_from_lsb_to_celsius(temperature);
-
-		size = sprintf(msg, "LPS22DF -> P: %.2f hPa, T: %.2f °C\r\n", SENSORS_Data.lps22df_data[0], SENSORS_Data.lps22df_data[1]);
-		HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, 100);
 	}
 	else
 	{
 		HAL_UART_Transmit(&huart1, (uint8_t*)"Error while reading LPS22DF data\r\n", 35, 100);
 	}
-}
 
-void SENSORS_STTS22H_dataGet(void) {
 	uint8_t flag;
-	int16_t temperature;
 	stts22h_temp_flag_data_ready_get(&stts22h_ctx, &flag);
 
 	if (!flag) {
 		HAL_UART_Transmit(&huart1, (uint8_t*)"STTS22H data was not ready for reading\r\n", 42, 100);
 	} else if (stts22h_temperature_raw_get(&stts22h_ctx, &temperature) == 0){
 		SENSORS_Data.stts22h_data = stts22h_from_lsb_to_celsius(temperature);
-
-		size = sprintf(msg, "STTS22H -> T: %.2f °C\r\n", SENSORS_Data.stts22h_data);
-
-		HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, 100);
 	} else {
 		HAL_UART_Transmit(&huart1, (uint8_t*)"Error while reading STTS22H data\r\n", 35, 100);
 	}
-}
 
-void SENSORS_SHT40AD1B_dataGet(void) {
-	if (sht40ad1b_data_get(&sht40ad1b_ctx, SENSORS_Data.sht40ad1b_data) == 0) {
-		size = sprintf(msg, "SHT40AD1B -> H: %.3f, T: %.3f °C %%\r\n", SENSORS_Data.sht40ad1b_data[0], SENSORS_Data.sht40ad1b_data[1]);
-		HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, 100);
-	} else {
+	if (sht40ad1b_data_get(&sht40ad1b_ctx, SENSORS_Data.sht40ad1b_data) != 0) {
 		HAL_UART_Transmit(&huart1, (uint8_t*)"Error while reading SHT40AD1B\r\n", 31, 100);
 	}
+}
+
+float SENSORS_getTemperature(void) {
+	float temperature = (
+			SENSORS_Data.lps22df_data[1]
+									  + SENSORS_Data.stts22h_data
+									  + SENSORS_Data.sht40ad1b_data[1]
+	)/3;	//get mean temperature from sensors
+
+	return temperature;
+}
+
+float SENSORS_getHumidity(void) {
+	return SENSORS_Data.sht40ad1b_data[0];
+}
+
+float SENSORS_getPressure(void) {
+	return SENSORS_Data.lps22df_data[0];
 }

@@ -52,18 +52,7 @@ ULONG shell_thread_stack[SHELL_THREAD_STACK_SIZE / sizeof(ULONG)];
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
-void sensor_thread_entry(ULONG thread_input) {
-	SENSORS_Init();
 
-	while (1) {
-		//SENSORS_startMeasure();
-		//SENSORS_LPS22DF_dataGet();
-		//SENSORS_STTS22H_dataGet();
-		//tx_thread_sleep(5);
-		//SENSORS_SHT40AD1B_dataGet();
-		tx_thread_sleep(100);	//100 ticks = 1 second
-	}
-}
 /* USER CODE END PFP */
 
 /**
@@ -79,31 +68,13 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
   /* USER CODE END App_ThreadX_MEM_POOL */
   /* USER CODE BEGIN App_ThreadX_Init */
 	ret = tx_thread_create(
-			&sensor_thread,
-			"Sensor Thread",
-			sensor_thread_entry,
-			0,
-			sensor_thread_stack,
-			SENSOR_THREAD_STACK_SIZE,
-			5,  // Priorit\u00e9 (ex: 5)
-			5,  // Priorit\u00e9 pr\u00e9emptive
-			TX_NO_TIME_SLICE,
-			TX_AUTO_START
-	);
-	
-	if (ret != TX_SUCCESS)
-	{
-		return ret;
-	}
-	
-	ret = tx_thread_create(
 			&shell_thread,
 			"Shell Thread",
 			SHELL_Task,
 			0,
 			shell_thread_stack,
 			SHELL_THREAD_STACK_SIZE,
-			4,  // Priority (lower than sensor thread)
+			4,  // Priority
 			4,  // Preemptive priority
 			TX_NO_TIME_SLICE,
 			TX_AUTO_START

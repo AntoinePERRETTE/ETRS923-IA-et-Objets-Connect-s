@@ -143,13 +143,10 @@ static void SHELL_ProcessCommand(char *buffer, uint16_t length)
 {
   (void)length; /* Unused parameter */
 
-  /* Simple echo command - just print what was received */
-  /* This is the basic echo functionality */
-  /* In a real shell, you would parse commands here */
   
   /* For now, we just acknowledge the input */
-  char echo_msg[] = "Echo: ";
-  HAL_UART_Transmit(&huart1, (uint8_t*)echo_msg, strlen(echo_msg), HAL_MAX_DELAY);
-  HAL_UART_Transmit(&huart1, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
-  HAL_UART_Transmit(&huart1, (uint8_t*)"\r\n", 2, HAL_MAX_DELAY);
+//  char echo_msg[] = "Echo: ";
+//  HAL_UART_Transmit(&huart1, (uint8_t*)echo_msg, strlen(echo_msg), HAL_MAX_DELAY);
+//  HAL_UART_Transmit(&huart1, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
+//  HAL_UART_Transmit(&huart1, (uint8_t*)"\r\n", 2, HAL_MAX_DELAY);
 }
