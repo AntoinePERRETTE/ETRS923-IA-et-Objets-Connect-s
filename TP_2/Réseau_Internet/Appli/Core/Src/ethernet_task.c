@@ -128,11 +128,8 @@ static UINT ETHERNET_Ping(NX_IP *ip_instance, ULONG target_ip)
 {
   UINT status;
   NX_PACKET *packet_ptr;
-  ULONG actual_status;
-  ULONG sequence_number = 0;
-  ULONG timestamp;
 
-  status = nx_icmp_ping(ip_instance, target_ip, NULL, 0, &packet_ptr, &actual_status, &sequence_number, &timestamp, NX_IP_PERIODIC_RATE * 5);
+  status = nx_icmp_ping(ip_instance, target_ip, NULL, 0, &packet_ptr, NX_IP_PERIODIC_RATE * 5);
 
   if (packet_ptr)
   {
