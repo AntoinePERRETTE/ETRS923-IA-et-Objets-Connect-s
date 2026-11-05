@@ -548,9 +548,7 @@
 /* Defined, the destination address of ICMP packet is checked. The default
    is disabled. An ICMP Echo Request destined to an IP broadcast or IP
    multicast address will be silently discarded. */
-/*
 #define NX_ENABLE_ICMP_ADDRESS_CHECK
-*/
 
 /* Defined, disables NetX Duo from sending an ICMPv6 error message in response
    to a problem packet (e.g., improperly formatted header or packet header
@@ -2418,9 +2416,7 @@
    Note: Require driver support to use APIs from this file.
          A quick check in driver is to search for
          NX_LINK_RAW_PACKET_SEND. VLAN APIs are not supported if not found. */
-/*
 #define NX_ENABLE_VLAN
-*/
 
 #ifdef NX_DISABLE_IPV6
 #ifdef NX_DISABLE_IPV4

@@ -1,5 +1,5 @@
 ../Core/Src/shell.c:41:6:SHELL_Init	1
 ../Core/Src/shell.c:51:6:SHELL_Task	9
-../Core/Src/shell.c:121:13:SHELL_PrintPrompt	1
-../Core/Src/shell.c:132:13:SHELL_ProcessCommand	2
-../Core/Src/shell.c:147:13:SHELL_PrintSensorsData	1
+../Core/Src/shell.c:122:13:SHELL_PrintPrompt	1
+../Core/Src/shell.c:133:13:SHELL_ProcessCommand	2
+../Core/Src/shell.c:148:13:SHELL_PrintSensorsData	1
