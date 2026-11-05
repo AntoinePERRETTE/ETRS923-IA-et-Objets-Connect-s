@@ -29,7 +29,7 @@
 extern UART_HandleTypeDef huart1;
 
 /* Private function prototypes -----------------------------------------------*/
-static UINT ETHERNET_WaitForDHCP(void);
+static UINT ETHERNET_WaitForIPAddress(NX_IP *ip_instance);
 static void ETHERNET_PrintIPAddress(NX_IP *ip_instance);
 static UINT ETHERNET_Ping(NX_IP *ip_instance, ULONG target_ip);
 
@@ -49,10 +49,10 @@ void ETHERNET_PingTask(ULONG thread_input)
   size = sprintf(msg, "\r\n=== Ethernet Ping Task Started ===\r\n");
   HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
 
-  status = ETHERNET_WaitForDHCP();
+  status = ETHERNET_WaitForIPAddress(&NetXDuoEthIpInstance);
   if (status != NX_SUCCESS)
   {
-    size = sprintf(msg, "DHCP Failed!\r\n");
+    size = sprintf(msg, "Failed to get IP address via DHCP!\r\n");
     HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
     return;
   }
@@ -78,21 +78,31 @@ void ETHERNET_PingTask(ULONG thread_input)
 }
 
 /**
-  * @brief  Wait for DHCP to complete
-  * @param  None
-  * @retval NX_SUCCESS if DHCP succeeded
+  * @brief  Wait for a valid IP address
+  * @param  ip_instance: NX_IP instance
+  * @retval NX_SUCCESS if IP address is obtained
   */
-static UINT ETHERNET_WaitForDHCP(void)
+static UINT ETHERNET_WaitForIPAddress(NX_IP *ip_instance)
 {
-  UINT status;
+  ULONG ip_address;
+  ULONG net_mask;
+  UINT retries = 0;
+  const UINT max_retries = 100;
 
-  status = tx_semaphore_get(&DHCPSemaphore, TX_WAIT_FOREVER);
-  if (status != TX_SUCCESS)
+  while (retries < max_retries)
   {
-    return NX_DHCP_ERROR;
+    nx_ip_address_get(ip_instance, &ip_address, &net_mask);
+
+    if (ip_address != 0 && ip_address != NX_APP_DEFAULT_IP_ADDRESS)
+    {
+      return NX_SUCCESS;
+    }
+
+    tx_thread_sleep(10);
+    retries++;
   }
 
-  return NX_SUCCESS;
+  return NX_NOT_SUCCESSFUL;
 }
 
 /**
