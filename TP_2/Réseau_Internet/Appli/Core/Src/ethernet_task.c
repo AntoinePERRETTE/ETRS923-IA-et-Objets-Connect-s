@@ -20,7 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "ethernet_task.h"
-#include "netxduo_config.h"
+#include "../NetXDuo/App/netxduo_config.h"
 #include "tx_api.h"
 #include "nx_icmpv4.h"
 #include "main.h"
@@ -28,8 +28,13 @@
 /* Private variables ---------------------------------------------------------*/
 extern UART_HandleTypeDef huart1;
 
+/* Private defines -----------------------------------------------------------*/
+#define STATIC_IP_ADDRESS   0xC0A80164  // 192.168.1.100
+#define STATIC_NET_MASK    0xFFFFFF00  // 255.255.255.0
+#define STATIC_GATEWAY     0xC0A80101  // 192.168.1.1
+
 /* Private function prototypes -----------------------------------------------*/
-static UINT ETHERNET_WaitForIPAddress(NX_IP *ip_instance);
+static UINT ETHERNET_ConfigureStaticIP(NX_IP *ip_instance);
 static void ETHERNET_PrintIPAddress(NX_IP *ip_instance);
 static UINT ETHERNET_Ping(NX_IP *ip_instance, ULONG target_ip);
 
@@ -49,13 +54,18 @@ void ETHERNET_PingTask(ULONG thread_input)
   size = sprintf(msg, "\r\n=== Ethernet Ping Task Started ===\r\n");
   HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
 
-  status = ETHERNET_WaitForIPAddress(&NetXDuoEthIpInstance);
+  size = sprintf(msg, "Configuring static IP address...\r\n");
+  HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
+
+  status = ETHERNET_ConfigureStaticIP(&NetXDuoEthIpInstance);
   if (status != NX_SUCCESS)
   {
-    size = sprintf(msg, "Failed to get IP address via DHCP!\r\n");
+    size = sprintf(msg, "Failed to configure static IP!\r\n");
     HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
     return;
   }
+
+  tx_thread_sleep(20);
 
   ETHERNET_PrintIPAddress(&NetXDuoEthIpInstance);
 
@@ -78,31 +88,27 @@ void ETHERNET_PingTask(ULONG thread_input)
 }
 
 /**
-  * @brief  Wait for a valid IP address
+  * @brief  Configure static IP address
   * @param  ip_instance: NX_IP instance
-  * @retval NX_SUCCESS if IP address is obtained
+  * @retval NX_SUCCESS if configuration succeeded
   */
-static UINT ETHERNET_WaitForIPAddress(NX_IP *ip_instance)
+static UINT ETHERNET_ConfigureStaticIP(NX_IP *ip_instance)
 {
-  ULONG ip_address;
-  ULONG net_mask;
-  UINT retries = 0;
-  const UINT max_retries = 100;
+  UINT status;
 
-  while (retries < max_retries)
+  status = nx_ip_address_set(ip_instance, STATIC_IP_ADDRESS, STATIC_NET_MASK);
+  if (status != NX_SUCCESS)
   {
-    nx_ip_address_get(ip_instance, &ip_address, &net_mask);
-
-    if (ip_address != 0 && ip_address != NX_APP_DEFAULT_IP_ADDRESS)
-    {
-      return NX_SUCCESS;
-    }
-
-    tx_thread_sleep(10);
-    retries++;
+    return status;
   }
 
-  return NX_NOT_SUCCESSFUL;
+  status = nx_ip_gateway_address_set(ip_instance, STATIC_GATEWAY);
+  if (status != NX_SUCCESS)
+  {
+    return status;
+  }
+
+  return NX_SUCCESS;
 }
 
 /**
@@ -124,7 +130,7 @@ static void ETHERNET_PrintIPAddress(NX_IP *ip_instance)
   ULONG ip_byte3 = (ip_address >> 8) & 0xFF;
   ULONG ip_byte4 = ip_address & 0xFF;
 
-  size = sprintf(msg, "IP Address: %lu.%lu.%lu.%lu\r\n", ip_byte1, ip_byte2, ip_byte3, ip_byte4);
+  size = sprintf(msg, "Static IP Address: %lu.%lu.%lu.%lu\r\n", ip_byte1, ip_byte2, ip_byte3, ip_byte4);
   HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
 }
 
