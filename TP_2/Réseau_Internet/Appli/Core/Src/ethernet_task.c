@@ -3,7 +3,7 @@
   ******************************************************************************
   * @file    ethernet_task.c
   * @author  Antoine PERRETTE
-  * @brief   Ethernet ping task implementation
+  * @brief   Ethernet task implementation for ping response
   ******************************************************************************
   * @attention
   *
@@ -36,10 +36,9 @@ extern UART_HandleTypeDef huart1;
 /* Private function prototypes -----------------------------------------------*/
 static UINT ETHERNET_ConfigureStaticIP(NX_IP *ip_instance);
 static void ETHERNET_PrintIPAddress(NX_IP *ip_instance);
-static UINT ETHERNET_Ping(NX_IP *ip_instance, ULONG target_ip);
 
 /**
-  * @brief  Ethernet ping task entry point
+  * @brief  Ethernet task entry point
   * @param  thread_input: Thread input parameter
   * @retval None
   */
@@ -51,7 +50,7 @@ void ETHERNET_PingTask(ULONG thread_input)
   char msg[64];
   int size;
 
-  size = sprintf(msg, "\r\n=== Ethernet Ping Task Started ===\r\n");
+  size = sprintf(msg, "\r\n=== Ethernet Task Started ===\r\n");
   HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
 
   size = sprintf(msg, "Configuring static IP address...\r\n");
@@ -69,21 +68,12 @@ void ETHERNET_PingTask(ULONG thread_input)
 
   ETHERNET_PrintIPAddress(&NetXDuoEthIpInstance);
 
+  size = sprintf(msg, "Ready to respond to ping requests from external PC\r\n");
+  HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
+
   while (1)
   {
-    status = ETHERNET_Ping(&NetXDuoEthIpInstance, PING_TARGET_IP);
-    
-    if (status == NX_SUCCESS)
-    {
-      size = sprintf(msg, "Ping to 8.8.8.8 successful!\r\n");
-    }
-    else
-    {
-      size = sprintf(msg, "Ping to 8.8.8.8 failed with status: %u\r\n", status);
-    }
-    HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
-
-    tx_thread_sleep(50);
+    tx_thread_sleep(100);
   }
 }
 
@@ -132,27 +122,6 @@ static void ETHERNET_PrintIPAddress(NX_IP *ip_instance)
 
   size = sprintf(msg, "Static IP Address: %lu.%lu.%lu.%lu\r\n", ip_byte1, ip_byte2, ip_byte3, ip_byte4);
   HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
-}
-
-/**
-  * @brief  Ping a target IP address
-  * @param  ip_instance: NX_IP instance
-  * @param  target_ip: Target IP address in network byte order
-  * @retval NX_SUCCESS if ping succeeded
-  */
-static UINT ETHERNET_Ping(NX_IP *ip_instance, ULONG target_ip)
-{
-  UINT status;
-  NX_PACKET *packet_ptr;
-
-  status = nx_icmp_ping(ip_instance, target_ip, NULL, 0, &packet_ptr, NX_IP_PERIODIC_RATE * 5);
-
-  if (packet_ptr)
-  {
-    nx_packet_release(packet_ptr);
-  }
-
-  return status;
 }
 
 /**
