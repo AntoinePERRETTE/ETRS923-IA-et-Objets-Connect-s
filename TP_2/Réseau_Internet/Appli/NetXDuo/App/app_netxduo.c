@@ -52,7 +52,7 @@ NX_IP          NetXDuoEthIpInstance;
 
 /* Private function prototypes -----------------------------------------------*/
 static VOID App_Main_Thread_Entry (ULONG thread_input);
-NX_PARAMETER_NOT_USED static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr);
+static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -194,10 +194,11 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
 * @param ptr: user data
 * @retval none
 */
-NX_PARAMETER_NOT_USED static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr)
+static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr)
 {
   /* USER CODE BEGIN ip_address_change_notify_callback */
-
+  (void)ip_instance;
+  (void)ptr;
   /* USER CODE END ip_address_change_notify_callback */
 }
 
