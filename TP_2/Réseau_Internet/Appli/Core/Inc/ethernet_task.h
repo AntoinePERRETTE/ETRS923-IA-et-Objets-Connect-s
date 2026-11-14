@@ -3,7 +3,7 @@
   ******************************************************************************
   * @file    ethernet_task.h
   * @author  Antoine PERRETTE
-  * @brief   Ethernet ping task header file
+  * @brief   Ethernet ping task header file (deprecated - ping now in app_netxduo)
   ******************************************************************************
   * @attention
   *
@@ -33,7 +33,6 @@ extern "C" {
 /* Exported constants --------------------------------------------------------*/
 #define ETHERNET_THREAD_STACK_SIZE  2048
 #define ETHERNET_THREAD_PRIORITY    6
-#define PING_TARGET_IP            0x08080808  // 8.8.8.8
 
 /* Exported functions prototypes ---------------------------------------------*/
 void ETHERNET_PingTask(ULONG thread_input);

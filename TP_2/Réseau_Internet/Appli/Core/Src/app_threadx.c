@@ -45,9 +45,6 @@
 /* USER CODE BEGIN PV */
 TX_THREAD shell_thread;
 ULONG shell_thread_stack[SHELL_THREAD_STACK_SIZE / sizeof(ULONG)];
-
-TX_THREAD ethernet_thread;
-ULONG ethernet_thread_stack[ETHERNET_THREAD_STACK_SIZE / sizeof(ULONG)];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -74,8 +71,8 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
 			0,
 			shell_thread_stack,
 			SHELL_THREAD_STACK_SIZE,
-			4,  // Priority
-			4,  // Preemptive priority
+			15,  // Lowest priority
+			15,  // Preemptive priority
 			TX_NO_TIME_SLICE,
 			TX_AUTO_START
 	);
@@ -84,19 +81,6 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
 	{
 		return ret;
 	}
-	
-	ret = tx_thread_create(
-			&ethernet_thread,
-			"Ethernet Thread",
-			ETHERNET_PingTask,
-			0,
-			ethernet_thread_stack,
-			ETHERNET_THREAD_STACK_SIZE,
-			6,  // Priority
-			6,  // Preemptive priority
-			TX_NO_TIME_SLICE,
-			TX_AUTO_START
-	);
 
   /* USER CODE END App_ThreadX_Init */
 

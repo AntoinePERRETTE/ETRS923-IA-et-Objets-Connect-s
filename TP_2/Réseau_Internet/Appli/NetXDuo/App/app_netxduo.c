@@ -24,7 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 
 /* USER CODE BEGIN Includes */
-
+#include "nx_icmp.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,8 +46,6 @@
 TX_THREAD      NxAppThread;
 NX_PACKET_POOL NxAppPool;
 NX_IP          NetXDuoEthIpInstance;
-// DISABLED for static IP: TX_SEMAPHORE   DHCPSemaphore;
-// DISABLED for static IP: NX_DHCP        DHCPClient;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -102,8 +100,8 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
     return TX_POOL_ERROR;
   }
 
-   /* Create the main NX_IP instance */
-  ret = nx_ip_create(&NetXDuoEthIpInstance, "NetX Ip instance", NX_APP_DEFAULT_IP_ADDRESS, NX_APP_DEFAULT_NET_MASK, &NxAppPool, nx_stm32_eth_driver,
+   /* Create the main NX_IP instance with static IP 192.168.0.100/24 */
+  ret = nx_ip_create(&NetXDuoEthIpInstance, "NetX Ip instance", 0xC0A80064, 0xFFFFFF00, &NxAppPool, nx_stm32_eth_driver,
                      pointer, Nx_IP_INSTANCE_THREAD_SIZE, NX_APP_INSTANCE_PRIORITY);
 
   if (ret != NX_SUCCESS)
@@ -184,22 +182,6 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
     return TX_THREAD_ERROR;
   }
 
-  /* Create the DHCP client */
-
-  /* USER CODE BEGIN DHCP_Protocol_Initialization */
-
-  /* USER CODE END DHCP_Protocol_Initialization */
-
-  // DISABLED for static IP:   ret = nx_dhcp_create(&DHCPClient, &NetXDuoEthIpInstance, "DHCP Client");
-  // DISABLED for static IP: 
-  // DISABLED for static IP:   if (ret != NX_SUCCESS)
-  // DISABLED for static IP:   {
-  // DISABLED for static IP:     return NX_DHCP_ERROR;
-  // DISABLED for static IP:   }
-  // DISABLED for static IP: 
-  // DISABLED for static IP: /* set DHCP notification callback  */
-  // DISABLED for static IP:   tx_semaphore_create(&DHCPSemaphore, "DHCP Semaphore", 0);
-
   /* USER CODE BEGIN MX_NetXDuo_Init */
   /* USER CODE END MX_NetXDuo_Init */
 
@@ -227,40 +209,30 @@ NX_PARAMETER_NOT_USED static VOID ip_address_change_notify_callback(NX_IP *ip_in
 static VOID App_Main_Thread_Entry (ULONG thread_input)
 {
   /* USER CODE BEGIN Nx_App_Thread_Entry 0 */
+  UINT ret = NX_SUCCESS;
+  NX_PACKET *packet_ptr;
+  ULONG target_ip = 0xC0A80065; // 192.168.0.101
+  ULONG wait_option = NX_IP_PERIODIC_RATE * 2;
 
   /* USER CODE END Nx_App_Thread_Entry 0 */
 
-  UINT ret = NX_SUCCESS;
 
   /* USER CODE BEGIN Nx_App_Thread_Entry 1 */
 
   /* USER CODE END Nx_App_Thread_Entry 1 */
 
-  /* register the IP address change callback */
-  // DISABLED for static IP: ret = nx_ip_address_change_notify(&NetXDuoEthIpInstance, ip_address_change_notify_callback, NULL);
-{DISABLED }  if (ret != NX_SUCCESS)
-{DISABLED }  {
-{DISABLED }    /* USER CODE BEGIN IP address change callback error */
-{DISABLED }
-{DISABLED }    /* USER CODE END IP address change callback error */
+  while (1)
+  {
+    /* Send ping to 192.168.0.101 every 2 seconds */
+    ret = nx_icmp_ping(&NetXDuoEthIpInstance, target_ip, NULL, 0, &packet_ptr, wait_option);
+    if (ret != NX_SUCCESS)
+    {
+      /* Ping failed, but continue trying */
+    }
+    
+    /* Sleep for 2 seconds between pings */
+    tx_thread_sleep(wait_option);
   }
-
-  /* start the DHCP client */
-  // DISABLED for static IP:   ret = nx_dhcp_start(&DHCPClient);
-  // DISABLED for static IP:   if (ret != NX_SUCCESS)
-  // DISABLED for static IP:   {
-  // DISABLED for static IP:     /* USER CODE BEGIN DHCP client start error */
-  // DISABLED for static IP: 
-  // DISABLED for static IP:     /* USER CODE END DHCP client start error */
-  }
-   // DISABLED for static IP: printf("Looking for DHCP server ..\n");
-  /* wait until an IP address is ready */
-  // DISABLED for static IP:   if(tx_semaphore_get(&DHCPSemaphore, TX_WAIT_FOREVER) != TX_SUCCESS)
-  // DISABLED for static IP:   {
-  // DISABLED for static IP:     /* USER CODE BEGIN DHCPSemaphore get error */
-  // DISABLED for static IP: 
-  // DISABLED for static IP:     /* USER CODE END DHCPSemaphore get error */
-  // DISABLED for static IP:   }
 
   /* USER CODE BEGIN Nx_App_Thread_Entry 2 */
 

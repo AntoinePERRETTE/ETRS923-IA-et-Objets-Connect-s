@@ -3,7 +3,7 @@
   ******************************************************************************
   * @file    ethernet_task.c
   * @author  Antoine PERRETTE
-  * @brief   Ethernet task implementation for ping response
+  * @brief   Ethernet task implementation (deprecated - ping now in app_netxduo)
   ******************************************************************************
   * @attention
   *
@@ -28,7 +28,7 @@
 extern UART_HandleTypeDef huart1;
 
 /**
-  * @brief  Ethernet task entry point
+  * @brief  Ethernet task entry point (deprecated)
   * @param  thread_input: Thread input parameter
   * @retval None
   */
@@ -42,7 +42,7 @@ void ETHERNET_PingTask(ULONG thread_input)
   size = sprintf(msg, "\r\n=== Ethernet Task Started ===\r\n");
   HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
 
-  size = sprintf(msg, "Static IP: 192.168.1.100, Netmask: 255.255.255.0, Gateway: 192.168.1.1\r\n");
+  size = sprintf(msg, "Static IP: 192.168.0.100, Netmask: 255.255.255.0\r\n");
   HAL_UART_Transmit(&huart1, (uint8_t*)msg, size, HAL_MAX_DELAY);
 
   size = sprintf(msg, "Ready to respond to ping requests from external PC\r\n");

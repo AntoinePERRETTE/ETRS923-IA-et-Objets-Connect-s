@@ -28,12 +28,9 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "nx_api.h"
-#include "nxd_dhcp_client.h"
 
 /* Exported variables --------------------------------------------------------*/
 extern NX_IP NetXDuoEthIpInstance;
-extern NX_DHCP DHCPClient;
-extern TX_SEMAPHORE DHCPSemaphore;
 
 #ifdef __cplusplus
 }
