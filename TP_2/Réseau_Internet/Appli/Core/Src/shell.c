@@ -64,12 +64,12 @@ void SHELL_Task(ULONG thread_input)
 
 	while (1)
 	{
+		tx_thread_sleep(10);
 		SHELL_PrintPrompt();
 
 		buffer_index = 0;
 		while (1)
 		{
-			tx_thread_sleep(5);
 			if (HAL_UART_Receive(&huart1, &received_char, 1, HAL_MAX_DELAY) == HAL_OK)
 			{
 				HAL_UART_Transmit(&huart1, &received_char, 1, HAL_MAX_DELAY);
@@ -151,6 +151,8 @@ static void SHELL_PrintSensorsData(void)
 	int size;
 
 	SENSORS_dataGet();
+
+	tx_thread_sleep(10);
 
 	float temperature = SENSORS_getTemperature();
 	float humidity = SENSORS_getHumidity();

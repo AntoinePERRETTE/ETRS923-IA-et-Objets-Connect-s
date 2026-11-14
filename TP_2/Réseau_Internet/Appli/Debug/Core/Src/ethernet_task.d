@@ -7,12 +7,8 @@ Core/Src/ethernet_task.o: ../Core/Src/ethernet_task.c \
  ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc/nx_port.h \
  ../NetXDuo/App/nx_user.h \
  ../../Middlewares/ST/threadx/common/inc/tx_trace.h \
- ../../Middlewares/ST/netxduo/addons/dhcp/nxd_dhcp_client.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_udp.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_api.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_ip.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_ipv4.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_icmpv4.h ../Core/Inc/main.h \
+ /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/NetXDuo/../NetXDuo/App/netxduo_config.h \
+ ../Core/Inc/main.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h \
  ../Core/Inc/stm32n6xx_hal_conf.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_rcc.h \
@@ -57,12 +53,7 @@ Core/Src/ethernet_task.o: ../Core/Src/ethernet_task.c \
 ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc/nx_port.h:
 ../NetXDuo/App/nx_user.h:
 ../../Middlewares/ST/threadx/common/inc/tx_trace.h:
-../../Middlewares/ST/netxduo/addons/dhcp/nxd_dhcp_client.h:
-../../Middlewares/ST/netxduo/common/inc/nx_udp.h:
-../../Middlewares/ST/netxduo/common/inc/nx_api.h:
-../../Middlewares/ST/netxduo/common/inc/nx_ip.h:
-../../Middlewares/ST/netxduo/common/inc/nx_ipv4.h:
-../../Middlewares/ST/netxduo/common/inc/nx_icmpv4.h:
+/home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/NetXDuo/../NetXDuo/App/netxduo_config.h:
 ../Core/Inc/main.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h:
 ../Core/Inc/stm32n6xx_hal_conf.h:

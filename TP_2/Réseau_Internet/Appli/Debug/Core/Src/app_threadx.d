@@ -37,17 +37,7 @@ Core/Src/app_threadx.o: ../Core/Src/app_threadx.c \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h \
- ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h \
- ../Core/Inc/ethernet_task.h ../NetXDuo/App/netxduo_config.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_api.h \
- ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc/nx_port.h \
- ../NetXDuo/App/nx_user.h \
- ../../Middlewares/ST/threadx/common/inc/tx_trace.h \
- ../../Middlewares/ST/netxduo/addons/dhcp/nxd_dhcp_client.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_udp.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_api.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_ip.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_ipv4.h
+ ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h
 ../Core/Inc/app_threadx.h:
 ../../Middlewares/ST/threadx/common/inc/tx_api.h:
 ../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc/tx_port.h:
@@ -89,14 +79,3 @@ Core/Src/app_threadx.o: ../Core/Src/app_threadx.c \
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h:
-../Core/Inc/ethernet_task.h:
-../NetXDuo/App/netxduo_config.h:
-../../Middlewares/ST/netxduo/common/inc/nx_api.h:
-../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc/nx_port.h:
-../NetXDuo/App/nx_user.h:
-../../Middlewares/ST/threadx/common/inc/tx_trace.h:
-../../Middlewares/ST/netxduo/addons/dhcp/nxd_dhcp_client.h:
-../../Middlewares/ST/netxduo/common/inc/nx_udp.h:
-../../Middlewares/ST/netxduo/common/inc/nx_api.h:
-../../Middlewares/ST/netxduo/common/inc/nx_ip.h:
-../../Middlewares/ST/netxduo/common/inc/nx_ipv4.h:

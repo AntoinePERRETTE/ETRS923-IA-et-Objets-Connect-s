@@ -38,19 +38,14 @@ AZURE_RTOS/App/app_azure_rtos.o: ../AZURE_RTOS/App/app_azure_rtos.c \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h \
- ../Core/Inc/ethernet_task.h ../NetXDuo/App/netxduo_config.h \
+ ../AZURE_RTOS/App/app_azure_rtos_config.h ../NetXDuo/App/app_netxduo.h \
  ../../Middlewares/ST/netxduo/common/inc/nx_api.h \
  ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc/nx_port.h \
  ../NetXDuo/App/nx_user.h \
  ../../Middlewares/ST/threadx/common/inc/tx_trace.h \
- ../../Middlewares/ST/netxduo/addons/dhcp/nxd_dhcp_client.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_udp.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_api.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_ip.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_ipv4.h \
- ../AZURE_RTOS/App/app_azure_rtos_config.h ../NetXDuo/App/app_netxduo.h \
  ../../Middlewares/ST/netxduo/common/drivers/ethernet/nx_stm32_eth_driver.h \
- ../../Middlewares/ST/netxduo/common/inc/nx_link.h
+ ../../Middlewares/ST/netxduo/common/inc/nx_link.h \
+ ../../Middlewares/ST/netxduo/common/inc/nx_api.h
 ../AZURE_RTOS/App/app_azure_rtos.h:
 ../Core/Inc/app_threadx.h:
 ../../Middlewares/ST/threadx/common/inc/tx_api.h:
@@ -93,18 +88,12 @@ AZURE_RTOS/App/app_azure_rtos.o: ../AZURE_RTOS/App/app_azure_rtos.c \
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h:
-../Core/Inc/ethernet_task.h:
-../NetXDuo/App/netxduo_config.h:
+../AZURE_RTOS/App/app_azure_rtos_config.h:
+../NetXDuo/App/app_netxduo.h:
 ../../Middlewares/ST/netxduo/common/inc/nx_api.h:
 ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc/nx_port.h:
 ../NetXDuo/App/nx_user.h:
 ../../Middlewares/ST/threadx/common/inc/tx_trace.h:
-../../Middlewares/ST/netxduo/addons/dhcp/nxd_dhcp_client.h:
-../../Middlewares/ST/netxduo/common/inc/nx_udp.h:
-../../Middlewares/ST/netxduo/common/inc/nx_api.h:
-../../Middlewares/ST/netxduo/common/inc/nx_ip.h:
-../../Middlewares/ST/netxduo/common/inc/nx_ipv4.h:
-../AZURE_RTOS/App/app_azure_rtos_config.h:
-../NetXDuo/App/app_netxduo.h:
 ../../Middlewares/ST/netxduo/common/drivers/ethernet/nx_stm32_eth_driver.h:
 ../../Middlewares/ST/netxduo/common/inc/nx_link.h:
+../../Middlewares/ST/netxduo/common/inc/nx_api.h:
