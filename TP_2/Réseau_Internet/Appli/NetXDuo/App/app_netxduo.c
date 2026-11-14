@@ -22,7 +22,7 @@
 #include "app_netxduo.h"
 
 /* Private includes ----------------------------------------------------------*/
-#include "nxd_dhcp_client.h"
+
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -46,15 +46,15 @@
 TX_THREAD      NxAppThread;
 NX_PACKET_POOL NxAppPool;
 NX_IP          NetXDuoEthIpInstance;
-TX_SEMAPHORE   DHCPSemaphore;
-NX_DHCP        DHCPClient;
+// DISABLED for static IP: TX_SEMAPHORE   DHCPSemaphore;
+// DISABLED for static IP: NX_DHCP        DHCPClient;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 static VOID App_Main_Thread_Entry (ULONG thread_input);
-static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr);
+NX_PARAMETER_NOT_USED static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -190,15 +190,15 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
 
   /* USER CODE END DHCP_Protocol_Initialization */
 
-  ret = nx_dhcp_create(&DHCPClient, &NetXDuoEthIpInstance, "DHCP Client");
-
-  if (ret != NX_SUCCESS)
-  {
-    return NX_DHCP_ERROR;
-  }
-
-  /* set DHCP notification callback  */
-  tx_semaphore_create(&DHCPSemaphore, "DHCP Semaphore", 0);
+  // DISABLED for static IP:   ret = nx_dhcp_create(&DHCPClient, &NetXDuoEthIpInstance, "DHCP Client");
+  // DISABLED for static IP: 
+  // DISABLED for static IP:   if (ret != NX_SUCCESS)
+  // DISABLED for static IP:   {
+  // DISABLED for static IP:     return NX_DHCP_ERROR;
+  // DISABLED for static IP:   }
+  // DISABLED for static IP: 
+  // DISABLED for static IP: /* set DHCP notification callback  */
+  // DISABLED for static IP:   tx_semaphore_create(&DHCPSemaphore, "DHCP Semaphore", 0);
 
   /* USER CODE BEGIN MX_NetXDuo_Init */
   /* USER CODE END MX_NetXDuo_Init */
@@ -212,7 +212,7 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
 * @param ptr: user data
 * @retval none
 */
-static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr)
+NX_PARAMETER_NOT_USED static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr)
 {
   /* USER CODE BEGIN ip_address_change_notify_callback */
 
@@ -237,30 +237,30 @@ static VOID App_Main_Thread_Entry (ULONG thread_input)
   /* USER CODE END Nx_App_Thread_Entry 1 */
 
   /* register the IP address change callback */
-  ret = nx_ip_address_change_notify(&NetXDuoEthIpInstance, ip_address_change_notify_callback, NULL);
-  if (ret != NX_SUCCESS)
-  {
-    /* USER CODE BEGIN IP address change callback error */
-
-    /* USER CODE END IP address change callback error */
+  // DISABLED for static IP: ret = nx_ip_address_change_notify(&NetXDuoEthIpInstance, ip_address_change_notify_callback, NULL);
+{DISABLED }  if (ret != NX_SUCCESS)
+{DISABLED }  {
+{DISABLED }    /* USER CODE BEGIN IP address change callback error */
+{DISABLED }
+{DISABLED }    /* USER CODE END IP address change callback error */
   }
 
   /* start the DHCP client */
-  ret = nx_dhcp_start(&DHCPClient);
-  if (ret != NX_SUCCESS)
-  {
-    /* USER CODE BEGIN DHCP client start error */
-
-    /* USER CODE END DHCP client start error */
+  // DISABLED for static IP:   ret = nx_dhcp_start(&DHCPClient);
+  // DISABLED for static IP:   if (ret != NX_SUCCESS)
+  // DISABLED for static IP:   {
+  // DISABLED for static IP:     /* USER CODE BEGIN DHCP client start error */
+  // DISABLED for static IP: 
+  // DISABLED for static IP:     /* USER CODE END DHCP client start error */
   }
-   printf("Looking for DHCP server ..\n");
+   // DISABLED for static IP: printf("Looking for DHCP server ..\n");
   /* wait until an IP address is ready */
-  if(tx_semaphore_get(&DHCPSemaphore, TX_WAIT_FOREVER) != TX_SUCCESS)
-  {
-    /* USER CODE BEGIN DHCPSemaphore get error */
-
-    /* USER CODE END DHCPSemaphore get error */
-  }
+  // DISABLED for static IP:   if(tx_semaphore_get(&DHCPSemaphore, TX_WAIT_FOREVER) != TX_SUCCESS)
+  // DISABLED for static IP:   {
+  // DISABLED for static IP:     /* USER CODE BEGIN DHCPSemaphore get error */
+  // DISABLED for static IP: 
+  // DISABLED for static IP:     /* USER CODE END DHCPSemaphore get error */
+  // DISABLED for static IP:   }
 
   /* USER CODE BEGIN Nx_App_Thread_Entry 2 */
 
