@@ -38,6 +38,9 @@ AZURE_RTOS/App/app_azure_rtos.o: ../AZURE_RTOS/App/app_azure_rtos.c \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h \
+ ../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo.h \
+ ../Core/Inc/stm32n6xx_nucleo_conf.h \
+ ../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_errno.h \
  ../AZURE_RTOS/App/app_azure_rtos_config.h ../NetXDuo/App/app_netxduo.h \
  ../../Middlewares/ST/netxduo/common/inc/nx_api.h \
  ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc/nx_port.h \
@@ -88,6 +91,9 @@ AZURE_RTOS/App/app_azure_rtos.o: ../AZURE_RTOS/App/app_azure_rtos.c \
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h:
+../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo.h:
+../Core/Inc/stm32n6xx_nucleo_conf.h:
+../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_errno.h:
 ../AZURE_RTOS/App/app_azure_rtos_config.h:
 ../NetXDuo/App/app_netxduo.h:
 ../../Middlewares/ST/netxduo/common/inc/nx_api.h:

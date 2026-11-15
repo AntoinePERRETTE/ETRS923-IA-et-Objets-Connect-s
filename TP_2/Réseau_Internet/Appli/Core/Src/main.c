@@ -153,8 +153,8 @@ static void MX_ETH1_Init(void)
   MACAddr[1] = 0x80;
   MACAddr[2] = 0xE1;
   MACAddr[3] = 0x00;
-  MACAddr[4] = 0x00;
-  MACAddr[5] = 0x00;
+  MACAddr[4] = 0x0A;
+  MACAddr[5] = 0x12;
   heth1.Init.MACAddr = &MACAddr[0];
   heth1.Init.MediaInterface = HAL_ETH_RMII_MODE;
   for (int ch = 0; ch < ETH_DMA_CH_CNT; ch++)

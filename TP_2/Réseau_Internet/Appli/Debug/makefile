@@ -14,11 +14,10 @@ RM := rm -rf
 -include Middlewares/ST/netxduo/NX\ Core/subdir.mk
 -include Middlewares/ST/netxduo/LAN8742\ Phy\ Interface/subdir.mk
 -include Middlewares/ST/netxduo/Ethernet\ Interface/subdir.mk
--include Middlewares/ST/netxduo/Addons\ DNS/subdir.mk
--include Middlewares/ST/netxduo/Addons\ DHCP\ Client/subdir.mk
 -include Drivers/STMems/subdir.mk
 -include Drivers/STM32N6xx_HAL_Driver/subdir.mk
--include Drivers/BSP/Components/subdir.mk
+-include Drivers/BSP/STM32N6xx_Nucleo/subdir.mk
+-include Drivers/BSP/Component/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include AZURE_RTOS/App/subdir.mk

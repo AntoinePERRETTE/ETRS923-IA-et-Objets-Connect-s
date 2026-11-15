@@ -34,7 +34,10 @@ Core/Src/stm32n6xx_hal_msp.o: ../Core/Src/stm32n6xx_hal_msp.c \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h \
- ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h
+ ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h \
+ ../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo.h \
+ ../Core/Inc/stm32n6xx_nucleo_conf.h \
+ ../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_errno.h
 ../Core/Inc/main.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h:
 ../Core/Inc/stm32n6xx_hal_conf.h:
@@ -71,3 +74,6 @@ Core/Src/stm32n6xx_hal_msp.o: ../Core/Src/stm32n6xx_hal_msp.c \
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h:
+../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo.h:
+../Core/Inc/stm32n6xx_nucleo_conf.h:
+../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_errno.h:

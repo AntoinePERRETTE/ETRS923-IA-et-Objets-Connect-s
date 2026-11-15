@@ -20,7 +20,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32n6xx_hal.h"
 
-#include "rtl8211.h"
+#include "lan8742.h"
 
 /* USER CODE BEGIN Includes */
 

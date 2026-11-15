@@ -37,6 +37,9 @@ Core/Src/shell.o: ../Core/Src/shell.c ../Core/Inc/shell.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h \
+ ../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo.h \
+ ../Core/Inc/stm32n6xx_nucleo_conf.h \
+ ../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_errno.h \
  ../Core/Inc/main.h ../Core/Inc/sensor_task.h \
  /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/lps22df_reg.h \
  /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/stts22h_reg.h \
@@ -85,6 +88,9 @@ Core/Src/shell.o: ../Core/Src/shell.c ../Core/Inc/shell.h \
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h:
+../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo.h:
+../Core/Inc/stm32n6xx_nucleo_conf.h:
+../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_errno.h:
 ../Core/Inc/main.h:
 ../Core/Inc/sensor_task.h:
 /home/perrettea/Documents/IA_et_Objets_Connectes/ETRS923-IA-et-Objets-Connect-s/TP_2/Réseau_Internet/Appli/Drivers/STMems/lps22df_reg.h:

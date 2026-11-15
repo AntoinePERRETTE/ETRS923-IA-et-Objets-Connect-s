@@ -50,7 +50,10 @@ NetXDuo/App/app_netxduo.o: ../NetXDuo/App/app_netxduo.c \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h \
- ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h
+ ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h \
+ ../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo.h \
+ ../Core/Inc/stm32n6xx_nucleo_conf.h \
+ ../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_errno.h
 ../NetXDuo/App/app_netxduo.h:
 ../../Middlewares/ST/netxduo/common/inc/nx_api.h:
 ../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc/tx_port.h:
@@ -105,3 +108,6 @@ NetXDuo/App/app_netxduo.o: ../NetXDuo/App/app_netxduo.c \
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h:
+../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo.h:
+../Core/Inc/stm32n6xx_nucleo_conf.h:
+../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_errno.h:

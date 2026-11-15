@@ -34,6 +34,9 @@ Core/Src/secure_nsc.o: ../Core/Src/secure_nsc.c ../Core/Inc/main.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h \
  ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h \
+ ../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo.h \
+ ../Core/Inc/stm32n6xx_nucleo_conf.h \
+ ../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_errno.h \
  ../../Secure_nsclib/secure_nsc.h
 ../Core/Inc/main.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h:
@@ -71,4 +74,7 @@ Core/Src/secure_nsc.o: ../Core/Src/secure_nsc.c ../Core/Inc/main.h \
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_tim_ex.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart.h:
 ../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h:
+../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo.h:
+../Core/Inc/stm32n6xx_nucleo_conf.h:
+../../Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_errno.h:
 ../../Secure_nsclib/secure_nsc.h:
