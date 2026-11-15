@@ -25,6 +25,7 @@
 
 /* USER CODE BEGIN Includes */
 #include "nx_icmp.h"
+#include "main.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,6 +47,7 @@
 TX_THREAD      NxAppThread;
 NX_PACKET_POOL NxAppPool;
 NX_IP          NetXDuoEthIpInstance;
+extern UART_HandleTypeDef huart1;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -228,6 +230,7 @@ static VOID App_Main_Thread_Entry (ULONG thread_input)
     ret = nx_icmp_ping(&NetXDuoEthIpInstance, target_ip, NULL, 0, &packet_ptr, wait_option);
     if (ret != NX_SUCCESS)
     {
+    	HAL_UART_Transmit(&huart1, (uint8_t*)"error ping\r\n", 15, HAL_MAX_DELAY);
       /* Ping failed, but continue trying */
     }
     
