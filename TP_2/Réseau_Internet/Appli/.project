@@ -135,29 +135,9 @@
 			<locationURI>PARENT-1-PROJECT_LOC/Drivers/BSP/Components/lan8742/lan8742.c</locationURI>
 		</link>
 		<link>
-			<name>Middlewares/ST/netxduo/Addons DHCP Client/nxd_dhcp_client.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Middlewares/ST/netxduo/addons/dhcp/nxd_dhcp_client.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/ST/netxduo/Addons DHCP Client/nxd_dhcpv6_client.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Middlewares/ST/netxduo/addons/dhcp/nxd_dhcpv6_client.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/ST/netxduo/Addons DNS/nxd_dns.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Middlewares/ST/netxduo/addons/dns/nxd_dns.c</locationURI>
-		</link>
-		<link>
 			<name>Middlewares/ST/netxduo/Ethernet Interface/nx_stm32_eth_driver.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Middlewares/ST/netxduo/common/drivers/ethernet/nx_stm32_eth_driver.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/ST/netxduo/LAN8742 Phy Interface/nx_stm32_phy_driver.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Middlewares/ST/netxduo/common/drivers/ethernet/lan8742/nx_stm32_phy_driver.c</locationURI>
 		</link>
 		<link>
 			<name>Middlewares/ST/netxduo/NX Core/nx_arp_announce_send.c</name>

@@ -22,7 +22,6 @@
 #include "app_netxduo.h"
 
 /* Private includes ----------------------------------------------------------*/
-
 /* USER CODE BEGIN Includes */
 #include "nx_icmp.h"
 #include "main.h"
@@ -47,14 +46,12 @@
 TX_THREAD      NxAppThread;
 NX_PACKET_POOL NxAppPool;
 NX_IP          NetXDuoEthIpInstance;
-extern UART_HandleTypeDef huart1;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 static VOID App_Main_Thread_Entry (ULONG thread_input);
-static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -102,8 +99,8 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
     return TX_POOL_ERROR;
   }
 
-   /* Create the main NX_IP instance with static IP 192.168.0.100/24 */
-  ret = nx_ip_create(&NetXDuoEthIpInstance, "NetX Ip instance", 0xC0A80064, 0xFFFFFF00, &NxAppPool, nx_stm32_eth_driver,
+   /* Create the main NX_IP instance */
+  ret = nx_ip_create(&NetXDuoEthIpInstance, "NetX Ip instance", NX_APP_DEFAULT_IP_ADDRESS, NX_APP_DEFAULT_NET_MASK, &NxAppPool, nx_stm32_eth_driver,
                      pointer, Nx_IP_INSTANCE_THREAD_SIZE, NX_APP_INSTANCE_PRIORITY);
 
   if (ret != NX_SUCCESS)
@@ -191,20 +188,6 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
 }
 
 /**
-* @brief  ip address change callback.
-* @param ip_instance: NX_IP instance
-* @param ptr: user data
-* @retval none
-*/
-static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr)
-{
-  /* USER CODE BEGIN ip_address_change_notify_callback */
-  (void)ip_instance;
-  (void)ptr;
-  /* USER CODE END ip_address_change_notify_callback */
-}
-
-/**
 * @brief  Main thread entry.
 * @param thread_input: ULONG user argument used by the thread entry
 * @retval none
@@ -218,29 +201,6 @@ static VOID App_Main_Thread_Entry (ULONG thread_input)
   ULONG wait_option = NX_IP_PERIODIC_RATE * 2;
 
   /* USER CODE END Nx_App_Thread_Entry 0 */
-
-
-  /* USER CODE BEGIN Nx_App_Thread_Entry 1 */
-
-  /* USER CODE END Nx_App_Thread_Entry 1 */
-
-  while (1)
-  {
-    /* Send ping to 192.168.0.101 every 2 seconds */
-    ret = nx_icmp_ping(&NetXDuoEthIpInstance, target_ip, NULL, 0, &packet_ptr, wait_option);
-    if (ret != NX_SUCCESS)
-    {
-    	HAL_UART_Transmit(&huart1, (uint8_t*)"error ping\r\n", 15, HAL_MAX_DELAY);
-      /* Ping failed, but continue trying */
-    }
-    
-    /* Sleep for 2 seconds between pings */
-    tx_thread_sleep(wait_option);
-  }
-
-  /* USER CODE BEGIN Nx_App_Thread_Entry 2 */
-
-  /* USER CODE END Nx_App_Thread_Entry 2 */
 
 }
 /* USER CODE BEGIN 1 */

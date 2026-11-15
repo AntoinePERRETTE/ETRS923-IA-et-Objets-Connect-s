@@ -24,7 +24,7 @@
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.1626670223" name="Floating-point ABI" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.value.hard" valueType="enumerated"/>
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board.562217441" name="Board" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board" useByScannerDiscovery="false" value="NUCLEO-N657X0-Q" valueType="string"/>
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertbinary.628002084" name="Convert to binary file (-O binary)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertbinary" useByScannerDiscovery="false" value="true" valueType="boolean"/>
-							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults.2036208940" name="Defaults" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults" useByScannerDiscovery="false" value="com.st.stm32cube.ide.common.services.build.inputs.revA.1.0.6 || Debug || true || Executable || com.st.stm32cube.ide.mcu.gnu.managedbuild.option.toolchain.value.workspace || NUCLEO-N657X0-Q || 0 || 0 || arm-none-eabi- || ${gnu_tools_for_stm32_compiler_path} || ../NetXDuo/App | ../NetXDuo/Target | ../Core/Inc | ../AZURE_RTOS/App | ../../Secure_nsclib | ../../Drivers/STM32N6xx_HAL_Driver/Inc | ../../Drivers/CMSIS/Device/ST/STM32N6xx/Include | ../../Drivers/STM32N6xx_HAL_Driver/Inc/Legacy | ../../Drivers/BSP/Components/lan8742 | ../../Middlewares/ST/netxduo/tsn/inc | ../../Middlewares/ST/netxduo/addons/dhcp | ../../Middlewares/ST/netxduo/common/drivers/ethernet | ../../Middlewares/ST/threadx/common/inc | ../../Middlewares/ST/netxduo/common/inc | ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc | ../../Middlewares/ST/netxduo/addons/dns | ../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc | ../../Drivers/CMSIS/Include || ../NetXDuo/App | ../NetXDuo/Target | ../Core/Inc | ../AZURE_RTOS/App | ../../Secure_nsclib | ../../Drivers/STM32N6xx_HAL_Driver/Inc | ../../Drivers/CMSIS/Device/ST/STM32N6xx/Include | ../../Drivers/STM32N6xx_HAL_Driver/Inc/Legacy | ../../Drivers/BSP/Components/lan8742 | ../../Middlewares/ST/netxduo/tsn/inc | ../../Middlewares/ST/netxduo/addons/dhcp | ../../Middlewares/ST/netxduo/common/drivers/ethernet | ../../Middlewares/ST/threadx/common/inc | ../../Middlewares/ST/netxduo/common/inc | ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc | ../../Middlewares/ST/netxduo/addons/dns | ../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc | ../../Drivers/CMSIS/Include ||  || USE_HAL_DRIVER | STM32N657xx | NX_INCLUDE_USER_DEFINE_FILE | TX_INCLUDE_USER_DEFINE_FILE | TX_SINGLE_MODE_SECURE=1 || TX_INCLUDE_USER_DEFINE_FILE | TX_SINGLE_MODE_SECURE=1 || AZURE_RTOS | Core/Src | Drivers | NetXDuo | Core/Startup | Middlewares ||  ||  || ${workspace_loc:/${ProjName}/STM32N657X0HXQ_LRUN.ld} || true || Secure ||  || secure_nsclib.o ||  || None ||  ||  || .bin || ::" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults.2036208940" name="Defaults" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults" useByScannerDiscovery="false" value="com.st.stm32cube.ide.common.services.build.inputs.revA.1.0.6 || Debug || true || Executable || com.st.stm32cube.ide.mcu.gnu.managedbuild.option.toolchain.value.workspace || NUCLEO-N657X0-Q || 0 || 0 || arm-none-eabi- || ${gnu_tools_for_stm32_compiler_path} || ../NetXDuo/App | ../NetXDuo/Target | ../Core/Inc | ../AZURE_RTOS/App | ../../Secure_nsclib | ../../Drivers/STM32N6xx_HAL_Driver/Inc | ../../Drivers/CMSIS/Device/ST/STM32N6xx/Include | ../../Drivers/STM32N6xx_HAL_Driver/Inc/Legacy | ../../Middlewares/ST/netxduo/tsn/inc | ../../Middlewares/ST/netxduo/common/drivers/ethernet | ../../Middlewares/ST/threadx/common/inc | ../../Middlewares/ST/netxduo/common/inc | ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc | ../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc | ../../Drivers/CMSIS/Include | ../../Drivers/BSP/Components/rtl8211 | ../../Middlewares/ST/netxduo/nx_secure/inc | ../../Middlewares/ST/netxduo/nx_secure/ports | ../../Middlewares/ST/netxduo/crypto_libraries/inc || ../NetXDuo/App | ../NetXDuo/Target | ../Core/Inc | ../AZURE_RTOS/App | ../../Secure_nsclib | ../../Drivers/STM32N6xx_HAL_Driver/Inc | ../../Drivers/CMSIS/Device/ST/STM32N6xx/Include | ../../Drivers/STM32N6xx_HAL_Driver/Inc/Legacy | ../../Drivers/BSP/Components/lan8742 | ../../Middlewares/ST/netxduo/tsn/inc | ../../Middlewares/ST/netxduo/addons/dhcp | ../../Middlewares/ST/netxduo/common/drivers/ethernet | ../../Middlewares/ST/threadx/common/inc | ../../Middlewares/ST/netxduo/common/inc | ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc | ../../Middlewares/ST/netxduo/addons/dns | ../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc | ../../Drivers/CMSIS/Include | ../../Drivers/BSP/Components/rtl8211 | ../../Middlewares/ST/netxduo/nx_secure/inc | ../../Middlewares/ST/netxduo/nx_secure/ports | ../../Middlewares/ST/netxduo/crypto_libraries/inc ||  || USE_HAL_DRIVER | STM32N657xx | NX_INCLUDE_USER_DEFINE_FILE | TX_INCLUDE_USER_DEFINE_FILE | TX_SINGLE_MODE_SECURE=1 | NX_SECURE_INCLUDE_USER_DEFINE_FILE | ETH_PHY_1000MBITS_SUPPORTED | RTL8211_INIT_TO=10000 || TX_INCLUDE_USER_DEFINE_FILE | TX_SINGLE_MODE_SECURE=1 || AZURE_RTOS | Core/Src | Drivers | NetXDuo | Core/Startup | Middlewares ||  ||  || ${workspace_loc:/${ProjName}/STM32N657X0HXQ_LRUN.ld} || true || Secure ||  || secure_nsclib.o ||  || None ||  ||  || .bin || ::" valueType="string"/>
 							<option id="com.st.stm32cube.ide.mcu.debug.option.cpuclock.1353931955" name="Cpu clock frequence" superClass="com.st.stm32cube.ide.mcu.debug.option.cpuclock" useByScannerDiscovery="false" value="75" valueType="string"/>
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.nanoprintffloat.1938955488" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.nanoprintffloat" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform.889116577" isAbstract="false" osList="all" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform"/>
@@ -57,6 +57,10 @@
 									<listOptionValue builtIn="false" value="../../Drivers/CMSIS/Include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Drivers/STMems}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/NetXDuo}&quot;"/>
+									<listOptionValue builtIn="false" value="../../Drivers/BSP/Components/rtl8211"/>
+									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/nx_secure/inc"/>
+									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/nx_secure/ports"/>
+									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/crypto_libraries/inc"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.1685393694" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
 							</tool>
@@ -71,6 +75,9 @@
 									<listOptionValue builtIn="false" value="NX_INCLUDE_USER_DEFINE_FILE"/>
 									<listOptionValue builtIn="false" value="TX_INCLUDE_USER_DEFINE_FILE"/>
 									<listOptionValue builtIn="false" value="TX_SINGLE_MODE_SECURE=1"/>
+									<listOptionValue builtIn="false" value="NX_SECURE_INCLUDE_USER_DEFINE_FILE"/>
+									<listOptionValue builtIn="false" value="ETH_PHY_1000MBITS_SUPPORTED"/>
+									<listOptionValue builtIn="false" value="RTL8211_INIT_TO=10000"/>
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths.2013235352" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="../NetXDuo/App"/>
@@ -81,18 +88,19 @@
 									<listOptionValue builtIn="false" value="../../Drivers/STM32N6xx_HAL_Driver/Inc"/>
 									<listOptionValue builtIn="false" value="../../Drivers/CMSIS/Device/ST/STM32N6xx/Include"/>
 									<listOptionValue builtIn="false" value="../../Drivers/STM32N6xx_HAL_Driver/Inc/Legacy"/>
-									<listOptionValue builtIn="false" value="../../Drivers/BSP/Components/lan8742"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/tsn/inc"/>
-									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/addons/dhcp"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/common/drivers/ethernet"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/threadx/common/inc"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/common/inc"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc"/>
-									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/addons/dns"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc"/>
 									<listOptionValue builtIn="false" value="../../Drivers/CMSIS/Include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Drivers/STMems}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/NetXDuo}&quot;"/>
+									<listOptionValue builtIn="false" value="../../Drivers/BSP/Components/rtl8211"/>
+									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/nx_secure/inc"/>
+									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/nx_secure/ports"/>
+									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/crypto_libraries/inc"/>
 								</option>
 								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.warnings.extra.1102884683" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.warnings.extra" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1764271714" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
@@ -153,7 +161,7 @@
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.1523911839" name="Floating-point ABI" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.value.hard" valueType="enumerated"/>
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board.233792180" name="Board" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board" useByScannerDiscovery="false" value="NUCLEO-N657X0-Q" valueType="string"/>
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertbinary.892403095" name="Convert to binary file (-O binary)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertbinary" useByScannerDiscovery="false" value="true" valueType="boolean"/>
-							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults.130982745" name="Defaults" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults" useByScannerDiscovery="false" value="com.st.stm32cube.ide.common.services.build.inputs.revA.1.0.6 || Release || false || Executable || com.st.stm32cube.ide.mcu.gnu.managedbuild.option.toolchain.value.workspace || NUCLEO-N657X0-Q || 0 || 0 || arm-none-eabi- || ${gnu_tools_for_stm32_compiler_path} || ../NetXDuo/App | ../NetXDuo/Target | ../Core/Inc | ../AZURE_RTOS/App | ../../Secure_nsclib | ../../Drivers/STM32N6xx_HAL_Driver/Inc | ../../Drivers/CMSIS/Device/ST/STM32N6xx/Include | ../../Drivers/STM32N6xx_HAL_Driver/Inc/Legacy | ../../Drivers/BSP/Components/lan8742 | ../../Middlewares/ST/netxduo/tsn/inc | ../../Middlewares/ST/netxduo/addons/dhcp | ../../Middlewares/ST/netxduo/common/drivers/ethernet | ../../Middlewares/ST/threadx/common/inc | ../../Middlewares/ST/netxduo/common/inc | ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc | ../../Middlewares/ST/netxduo/addons/dns | ../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc | ../../Drivers/CMSIS/Include || ../NetXDuo/App | ../NetXDuo/Target | ../Core/Inc | ../AZURE_RTOS/App | ../../Secure_nsclib | ../../Drivers/STM32N6xx_HAL_Driver/Inc | ../../Drivers/CMSIS/Device/ST/STM32N6xx/Include | ../../Drivers/STM32N6xx_HAL_Driver/Inc/Legacy | ../../Drivers/BSP/Components/lan8742 | ../../Middlewares/ST/netxduo/tsn/inc | ../../Middlewares/ST/netxduo/addons/dhcp | ../../Middlewares/ST/netxduo/common/drivers/ethernet | ../../Middlewares/ST/threadx/common/inc | ../../Middlewares/ST/netxduo/common/inc | ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc | ../../Middlewares/ST/netxduo/addons/dns | ../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc | ../../Drivers/CMSIS/Include ||  || USE_HAL_DRIVER | STM32N657xx | NX_INCLUDE_USER_DEFINE_FILE | TX_INCLUDE_USER_DEFINE_FILE | TX_SINGLE_MODE_SECURE=1 || TX_INCLUDE_USER_DEFINE_FILE | TX_SINGLE_MODE_SECURE=1 || AZURE_RTOS | Core/Src | Drivers | NetXDuo | Core/Startup | Middlewares ||  ||  || ${workspace_loc:/${ProjName}/STM32N657X0HXQ_LRUN.ld} || true || Secure ||  || secure_nsclib.o ||  || None ||  ||  || .bin || ::" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults.130982745" name="Defaults" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults" useByScannerDiscovery="false" value="com.st.stm32cube.ide.common.services.build.inputs.revA.1.0.6 || Release || false || Executable || com.st.stm32cube.ide.mcu.gnu.managedbuild.option.toolchain.value.workspace || NUCLEO-N657X0-Q || 0 || 0 || arm-none-eabi- || ${gnu_tools_for_stm32_compiler_path} || ../NetXDuo/App | ../NetXDuo/Target | ../Core/Inc | ../AZURE_RTOS/App | ../../Secure_nsclib | ../../Drivers/STM32N6xx_HAL_Driver/Inc | ../../Drivers/CMSIS/Device/ST/STM32N6xx/Include | ../../Drivers/STM32N6xx_HAL_Driver/Inc/Legacy | ../../Middlewares/ST/netxduo/tsn/inc | ../../Middlewares/ST/netxduo/common/drivers/ethernet | ../../Middlewares/ST/threadx/common/inc | ../../Middlewares/ST/netxduo/common/inc | ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc | ../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc | ../../Drivers/CMSIS/Include | ../../Drivers/BSP/Components/rtl8211 | ../../Middlewares/ST/netxduo/nx_secure/inc | ../../Middlewares/ST/netxduo/nx_secure/ports | ../../Middlewares/ST/netxduo/crypto_libraries/inc || ../NetXDuo/App | ../NetXDuo/Target | ../Core/Inc | ../AZURE_RTOS/App | ../../Secure_nsclib | ../../Drivers/STM32N6xx_HAL_Driver/Inc | ../../Drivers/CMSIS/Device/ST/STM32N6xx/Include | ../../Drivers/STM32N6xx_HAL_Driver/Inc/Legacy | ../../Drivers/BSP/Components/lan8742 | ../../Middlewares/ST/netxduo/tsn/inc | ../../Middlewares/ST/netxduo/addons/dhcp | ../../Middlewares/ST/netxduo/common/drivers/ethernet | ../../Middlewares/ST/threadx/common/inc | ../../Middlewares/ST/netxduo/common/inc | ../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc | ../../Middlewares/ST/netxduo/addons/dns | ../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc | ../../Drivers/CMSIS/Include | ../../Drivers/BSP/Components/rtl8211 | ../../Middlewares/ST/netxduo/nx_secure/inc | ../../Middlewares/ST/netxduo/nx_secure/ports | ../../Middlewares/ST/netxduo/crypto_libraries/inc ||  || USE_HAL_DRIVER | STM32N657xx | NX_INCLUDE_USER_DEFINE_FILE | TX_INCLUDE_USER_DEFINE_FILE | TX_SINGLE_MODE_SECURE=1 | NX_SECURE_INCLUDE_USER_DEFINE_FILE | ETH_PHY_1000MBITS_SUPPORTED | RTL8211_INIT_TO=10000 || TX_INCLUDE_USER_DEFINE_FILE | TX_SINGLE_MODE_SECURE=1 || AZURE_RTOS | Core/Src | Drivers | NetXDuo | Core/Startup | Middlewares ||  ||  || ${workspace_loc:/${ProjName}/STM32N657X0HXQ_LRUN.ld} || true || Secure ||  || secure_nsclib.o ||  || None ||  ||  || .bin || ::" valueType="string"/>
 							<option id="com.st.stm32cube.ide.mcu.debug.option.cpuclock.1917970356" name="Cpu clock frequence" superClass="com.st.stm32cube.ide.mcu.debug.option.cpuclock" useByScannerDiscovery="false" value="75" valueType="string"/>
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform.18859709" isAbstract="false" osList="all" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform"/>
 							<builder buildPath="${workspace_loc:/Réseau_Internet_Appli}/Release" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder.709241032" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder"/>
@@ -184,6 +192,10 @@
 									<listOptionValue builtIn="false" value="../../Drivers/CMSIS/Include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Drivers/STMems}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/NetXDuo}&quot;"/>
+									<listOptionValue builtIn="false" value="../../Drivers/BSP/Components/rtl8211"/>
+									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/nx_secure/inc"/>
+									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/nx_secure/ports"/>
+									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/crypto_libraries/inc"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.1637512296" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
 							</tool>
@@ -197,6 +209,9 @@
 									<listOptionValue builtIn="false" value="NX_INCLUDE_USER_DEFINE_FILE"/>
 									<listOptionValue builtIn="false" value="TX_INCLUDE_USER_DEFINE_FILE"/>
 									<listOptionValue builtIn="false" value="TX_SINGLE_MODE_SECURE=1"/>
+									<listOptionValue builtIn="false" value="NX_SECURE_INCLUDE_USER_DEFINE_FILE"/>
+									<listOptionValue builtIn="false" value="ETH_PHY_1000MBITS_SUPPORTED"/>
+									<listOptionValue builtIn="false" value="RTL8211_INIT_TO=10000"/>
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths.1363564560" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="../NetXDuo/App"/>
@@ -207,18 +222,19 @@
 									<listOptionValue builtIn="false" value="../../Drivers/STM32N6xx_HAL_Driver/Inc"/>
 									<listOptionValue builtIn="false" value="../../Drivers/CMSIS/Device/ST/STM32N6xx/Include"/>
 									<listOptionValue builtIn="false" value="../../Drivers/STM32N6xx_HAL_Driver/Inc/Legacy"/>
-									<listOptionValue builtIn="false" value="../../Drivers/BSP/Components/lan8742"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/tsn/inc"/>
-									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/addons/dhcp"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/common/drivers/ethernet"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/threadx/common/inc"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/common/inc"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/ports/cortex_m55/gnu/inc"/>
-									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/addons/dns"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/threadx/ports/cortex_m55/gnu/inc"/>
 									<listOptionValue builtIn="false" value="../../Drivers/CMSIS/Include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Drivers/STMems}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/NetXDuo}&quot;"/>
+									<listOptionValue builtIn="false" value="../../Drivers/BSP/Components/rtl8211"/>
+									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/nx_secure/inc"/>
+									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/nx_secure/ports"/>
+									<listOptionValue builtIn="false" value="../../Middlewares/ST/netxduo/crypto_libraries/inc"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1486475832" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
