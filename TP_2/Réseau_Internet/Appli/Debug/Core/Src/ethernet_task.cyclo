@@ -1,2 +1,0 @@
-../Core/Src/ethernet_task.c:35:6:ETHERNET_PingTask	1
-../Core/Src/ethernet_task.c:62:6:ETHERNET_Init	1
