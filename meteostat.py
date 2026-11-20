@@ -8,286 +8,263 @@ Original file is located at
 
 # Extraction des donées
 """
+# ================================================================
+# PARTIE 1 : extraction des données Meteostat pour l'entraînement
+# ================================================================
+!pip install -q "meteostat<2"
 
-!pip install -q meteostat==1.6.8 onnx onnxruntime onnxscript
-
-import numpy as np
-import pandas as pd
+import os, numpy as np, pandas as pd
 from datetime import datetime
-from meteostat import Stations, Hourly
+from numpy.lib.stride_tricks import sliding_window_view
+from meteostat import Hourly, Stations
+from google.colab import drive
 
-# ---------- Config ----------
-CITIES = {
-    "Paris": (48.85, 2.35),      "Brest": (48.39, -4.49),
-    "Lyon": (45.76, 4.84),       "Marseille": (43.30, 5.37),
-    "Strasbourg": (48.58, 7.75), "Chambery": (45.57, 5.92),
-    "Toulouse": (43.60, 1.44),   "Lille": (50.63, 3.06),
-    "Bordeaux": (44.84, -0.58),  "Clermont": (45.78, 3.08),
-    "Nice": (43.70, 7.26),       "Nantes": (47.22, -1.55),
-}
-START = datetime(2015, 1, 1)
-END   = datetime(2024, 12, 31, 23)
+drive.mount('/content/drive')
+DOSSIER = '/content/drive/MyDrive/meteo_ia'
+os.makedirs(DOSSIER, exist_ok=True)
 
-W = 168          # window = 7 days of hourly samples (= 504 samples every 20 min on the board)
-HORIZON_H = 0    # 0 = current weather. Try 3 or 6 to predict the weather in 3 h / 6 h.
+# Paramètres
+LAT, LON   = 45.646, 5.862          # Le Bourget-du-Lac
+ALT_MAX    = 600                    # stations de basse altitude uniquement
+N_STATIONS = 10
+START, END = datetime(2015, 1, 1), datetime(2025, 12, 31)
+W, C       = 12, 6                  # 12 heures, 6 entrées par heure
 
-CLASSES = ["Dégagé", "Nuageux", "Brouillard", "Pluie", "Neige"]
+# Codes Meteostat 'coco' regroupés en classes ; les codes absents sont ignorés
+CLASSES  = ['Clair', 'Nuageux', 'Brouillard', 'Pluie']
+COCO2CLS = {1:0, 2:0,                        # clair, peu nuageux
+            3:1, 4:1,                        # nuageux, couvert
+            5:2, 6:2,                        # brouillard
+            7:3, 8:3, 9:3, 17:3, 18:3,       # pluie, averses
+            25:3, 26:3}                      # orage, rattaché à la pluie
 
-# Meteostat 'coco' code -> class index
-COCO_TO_CLASS = {
-    1: 0, 2: 0,                                   # clear, fair
-    3: 1, 4: 1,                                   # cloudy, overcast
-    5: 2, 6: 2,                                   # fog, freezing fog
-    7: 3, 8: 3, 9: 3, 10: 3, 11: 3, 17: 3, 18: 3, # rain (incl. freezing rain, showers)
-    23: 3, 24: 3, 25: 3, 26: 3, 27: 3,            # lightning, hail, thunderstorm, storm
-    12: 4, 13: 4, 14: 4, 15: 4, 16: 4,            # sleet, snow
-    19: 4, 20: 4, 21: 4, 22: 4,
-}
+def features(df):
+    """Entrées calculables aussi sur la carte : T, HR (SHT40), P mer (LPS22DF)."""
+    T  = df['temp'].to_numpy(dtype=float)
+    RH = df['rhum'].to_numpy(dtype=float)
+    P  = df['pres'].to_numpy(dtype=float)
+    a, b = 17.62, 243.12
+    g  = np.log(np.clip(RH, 1, 100) / 100) + a*T/(b+T)
+    Td = b*g/(a-g)                                       # point de rosée
+    h  = df.index.hour.values                            # heure UTC
+    return np.stack([T, RH, P, T-Td, np.sin(2*np.pi*h/24), np.cos(2*np.pi*h/24)], axis=1)
 
-# ---------- Download ----------
-hours = pd.date_range(START, END, freq="h")
-X_list, Y_list, T_list, S_list = [], [], [], []
-used, n_st = set(), 0
+st = Stations().nearby(LAT, LON).fetch(20)
+st = st[st['elevation'] < ALT_MAX].head(N_STATIONS)
+print(st[['name', 'elevation']])
 
-for city, (lat, lon) in CITIES.items():
-    kept = 0
-    for sid in Stations().nearby(lat, lon).fetch(8).index:
-        if sid in used:
-            continue
-        df = Hourly(sid, START, END).fetch()
-        need = ["coco", "temp", "rhum", "pres"]
-        if df.empty or not all(c in df for c in need):
-            continue
-        if df["coco"].notna().sum() < 5000 or df["pres"].notna().sum() < 5000:
-            continue
-        df = df.reindex(hours)
-        # fill only short gaps (<= 3 h) in the sensor signals
-        sig = (df[["temp", "rhum", "pres"]]
-               .interpolate(limit=3, limit_area="inside")
-               .values.astype(np.float32))
-        y = np.full(len(df), -1, dtype=np.int64)
-        for code, cls in COCO_TO_CLASS.items():
-            y[(df["coco"] == code).values] = cls
+Xs, ys, ts = [], [], []
+for sid in st.index:
+    df = Hourly(sid, START, END).fetch()
+    if df.empty or not {'temp', 'rhum', 'pres', 'coco'}.issubset(df.columns):
+        continue
+    df  = df[['temp', 'rhum', 'pres', 'coco']].asfreq('h')
+    F   = features(df)
+    lab = df['coco'].map(COCO2CLS).to_numpy(dtype=float)
+    win = sliding_window_view(F, (W, C))[:, 0]          # (N, 12, 6)
+    l   = lab[W-1:]                                     # météo à la dernière heure de la fenêtre
+    ok  = np.isfinite(win).all(axis=(1, 2)) & np.isfinite(l)
+    if ok.sum() == 0:
+        continue
+    Xs.append(win[ok].astype(np.float32))
+    ys.append(l[ok].astype(np.int64))
+    ts.append(df.index[W-1:][ok])
+    print(f"{sid} {st.loc[sid, 'name']} : {ok.sum()} fenêtres")
 
-        X_list.append(sig); Y_list.append(y)
-        T_list.append(hours.values); S_list.append(np.full(len(df), n_st))
-        used.add(sid); n_st += 1; kept += 1
-        print(f"{city}: station {sid} ({int((y >= 0).sum())} labelled hours)")
-        if kept == 2:
-            break
+X = np.concatenate(Xs)
+y = np.concatenate(ys)
+t = pd.DatetimeIndex(np.concatenate(ts)).asi8          # dates en entier (ns)
 
-A   = np.concatenate(X_list)   # (N, 3) -> temp, rhum, pres
-Y   = np.concatenate(Y_list)
-TM  = np.concatenate(T_list)
-SID = np.concatenate(S_list)
-N = len(A)
+np.savez_compressed(f'{DOSSIER}/dataset_meteo.npz', X=X, y=y, t=t,
+                    classes=np.array(CLASSES), W=W, C=C)
+print(X.shape, np.bincount(y, minlength=len(CLASSES)))
 
-# ---------- Valid windows (no NaN inside, label available, single station) ----------
-bad = np.isnan(A).any(1).astype(np.int64)
-c = np.concatenate([[0], np.cumsum(bad)])
-e = np.arange(N)
-s = e - (W - 1)
-t = e + HORIZON_H
-ok = (s >= 0) & (t < N)
-s_c, t_c = np.clip(s, 0, N - 1), np.clip(t, 0, N - 1)
-ok &= (SID[s_c] == SID[e]) & (SID[t_c] == SID[e])
-ok &= (c[e + 1] - c[s_c]) == 0
-ok &= Y[t_c] >= 0
-valid = e[ok]
+# ================================================================
+# PARTIE 1 : extraction des données Meteostat pour l'entraînement
+# ================================================================
+!pip install -q "meteostat<2"
 
-# ---------- Time-based split (on the label time) ----------
-lt = TM[valid + HORIZON_H]
-tr = valid[lt <  np.datetime64("2023-01-01")]
-va = valid[(lt >= np.datetime64("2023-01-01")) & (lt < np.datetime64("2024-01-01"))]
-te = valid[lt >= np.datetime64("2024-01-01")]
+import os, numpy as np, pandas as pd
+from datetime import datetime
+from numpy.lib.stride_tricks import sliding_window_view
+from meteostat import Hourly, Stations
+from google.colab import drive
 
-print(f"\nWindows -> train {len(tr)}, val {len(va)}, test {len(te)}")
-print("\nTrain class distribution:")
-print(pd.Series(Y[tr + HORIZON_H]).map(lambda i: CLASSES[i]).value_counts())
+drive.mount('/content/drive')
+DOSSIER = '/content/drive/MyDrive/meteo_ia'
+os.makedirs(DOSSIER, exist_ok=True)
 
-"""# Train the model"""
+# Paramètres
+LAT, LON   = 45.646, 5.862          # Le Bourget-du-Lac
+ALT_MAX    = 600                    # stations de basse altitude uniquement
+N_STATIONS = 10
+START, END = datetime(2015, 1, 1), datetime(2025, 12, 31)
+W, C       = 12, 6                  # 12 heures, 6 entrées par heure
 
-import copy
-import torch, torch.nn as nn
-from sklearn.metrics import classification_report, confusion_matrix, f1_score
+# Codes Meteostat 'coco' regroupés en classes ; les codes absents sont ignorés
+CLASSES  = ['Clair', 'Nuageux', 'Brouillard', 'Pluie']
+COCO2CLS = {1:0, 2:0,                        # clair, peu nuageux
+            3:1, 4:1,                        # nuageux, couvert
+            5:2, 6:2,                        # brouillard
+            7:3, 8:3, 9:3, 17:3, 18:3,       # pluie, averses
+            25:3, 26:3}                      # orage, rattaché à la pluie
 
-device = "cuda" if torch.cuda.is_available() else "cpu"
-torch.manual_seed(42); np.random.seed(42)
+def features(df):
+    """Entrées calculables aussi sur la carte : T, HR (SHT40), P mer (LPS22DF)."""
+    T  = df['temp'].to_numpy(dtype=float)
+    RH = df['rhum'].to_numpy(dtype=float)
+    P  = df['pres'].to_numpy(dtype=float)
+    a, b = 17.62, 243.12
+    g  = np.log(np.clip(RH, 1, 100) / 100) + a*T/(b+T)
+    Td = b*g/(a-g)                                       # point de rosée
+    h  = df.index.hour.values                            # heure UTC
+    return np.stack([T, RH, P, T-Td, np.sin(2*np.pi*h/24), np.cos(2*np.pi*h/24)], axis=1)
 
-A_t = torch.tensor(np.nan_to_num(A), device=device)
-Y_t = torch.tensor(Y, device=device)
-offs = torch.arange(W, device=device)
+st = Stations().nearby(LAT, LON).fetch(20)
+st = st[st['elevation'] < ALT_MAX].head(N_STATIONS)
+print(st[['name', 'elevation']])
 
-def get_batch(ends_np):
-    e = torch.as_tensor(ends_np, device=device)
-    return A_t[e[:, None] - (W - 1) + offs[None, :]]          # (B, W, 3)
+Xs, ys, ts = [], [], []
+for sid in st.index:
+    df = Hourly(sid, START, END).fetch()
+    if df.empty or not {'temp', 'rhum', 'pres', 'coco'}.issubset(df.columns):
+        continue
+    df  = df[['temp', 'rhum', 'pres', 'coco']].asfreq('h')
+    F   = features(df)
+    lab = df['coco'].map(COCO2CLS).to_numpy(dtype=float)
+    win = sliding_window_view(F, (W, C))[:, 0]          # (N, 12, 6)
+    l   = lab[W-1:]                                     # météo à la dernière heure de la fenêtre
+    ok  = np.isfinite(win).all(axis=(1, 2)) & np.isfinite(l)
+    if ok.sum() == 0:
+        continue
+    Xs.append(win[ok].astype(np.float32))
+    ys.append(l[ok].astype(np.int64))
+    ts.append(df.index[W-1:][ok])
+    print(f"{sid} {st.loc[sid, 'name']} : {ok.sum()} fenêtres")
 
-def get_labels(ends_np):
-    return Y_t[torch.as_tensor(ends_np, device=device) + HORIZON_H]
+X = np.concatenate(Xs)
+y = np.concatenate(ys)
+t = pd.DatetimeIndex(np.concatenate(ts)).asi8          # dates en entier (ns)
 
-# ---- Pre-processing: THE SAME must be done on the STM32 ----
-def prep(win, augment=False):
-    t_ = win[..., 0].clone(); h_ = win[..., 1].clone(); p_ = win[..., 2].clone()
-    if augment:   # mimic sensor offsets (your sensor != airport weather station)
-        B = win.shape[0]
-        t_ += torch.randn(B, 1, device=win.device) * 1.0
-        h_ = (h_ + torch.randn(B, 1, device=win.device) * 3.0).clamp(0, 100)
-    t_ = (t_ - 10.0) / 15.0
-    h_ = (h_ - 50.0) / 30.0
-    p_ = (p_ - p_.mean(1, keepdim=True)) / 10.0               # pressure relative to window mean
-    return torch.stack([t_, h_, p_], 1).unsqueeze(2)          # (B, 3, 1, W)
+np.savez_compressed(f'{DOSSIER}/dataset_meteo.npz', X=X, y=y, t=t,
+                    classes=np.array(CLASSES), W=W, C=C)
+print(X.shape, np.bincount(y, minlength=len(CLASSES)))
 
-# ---- Model (NPU-friendly: Conv, BN, ReLU, MaxPool, Linear) ----
-def block(i, o, k, pool):
-    layers = [nn.Conv2d(i, o, (1, k), padding=(0, k // 2)), nn.BatchNorm2d(o), nn.ReLU()]
-    if pool > 1:
-        layers.append(nn.MaxPool2d((1, pool)))
-    return layers
+# ================================================================
+# PARTIE 3 : export ONNX int8 (QDQ) pour STM32Cube AI Studio
+# ================================================================
+!pip install -q tf2onnx onnx onnxruntime
 
-class WeatherCNN(nn.Module):
-    def __init__(self, n_classes):
-        super().__init__()
-        self.features = nn.Sequential(
-            *block(3, 16, 5, 2),    # 168 -> 84
-            *block(16, 32, 5, 2),   # 84  -> 42
-            *block(32, 64, 5, 3),   # 42  -> 14
-            *block(64, 64, 3, 1),   # 14
-        )
-        self.head = nn.Sequential(nn.Flatten(), nn.Dropout(0.3),
-                                  nn.Linear(64 * (W // 12), n_classes))
-    def forward(self, x):
-        return self.head(self.features(x))
+import os, sys, json, subprocess, numpy as np, tensorflow as tf, onnx, onnxruntime as ort
+from onnxruntime.quantization import (quantize_static, CalibrationDataReader, QuantFormat,
+                                      QuantType, CalibrationMethod)
+from onnxruntime.quantization.shape_inference import quant_pre_process
+from google.colab import drive, files
 
-model = WeatherCNN(len(CLASSES)).to(device)
-print("Parameters:", sum(p.numel() for p in model.parameters()))
+drive.mount('/content/drive')
+DOSSIER = '/content/drive/MyDrive/meteo_ia'
 
-# ---- Class weights ----
-counts = np.bincount(Y[tr + HORIZON_H], minlength=len(CLASSES)).astype(np.float32)
-w = 1.0 / np.sqrt(np.maximum(counts, 1)); w = w / w.sum() * len(CLASSES)
-criterion = nn.CrossEntropyLoss(weight=torch.tensor(w, device=device))
+model = tf.keras.models.load_model(f'{DOSSIER}/meteo_cnn.keras')
+dd    = np.load(f'{DOSSIER}/export_data.npz')
+calib, X_test, y_test = dd['calib'], dd['X_test'], dd['y_test']
+norm  = json.load(open(f'{DOSSIER}/norm.json'))
+W, C  = norm['W'], len(norm['mu'])
 
-# ---- Training ----
-EPOCHS, BS, SAMPLES_PER_EPOCH = 20, 512, 300_000
-steps = SAMPLES_PER_EPOCH // BS
-opt = torch.optim.AdamW(model.parameters(), lr=2e-3, weight_decay=1e-4)
-sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=3e-3, epochs=EPOCHS, steps_per_epoch=steps)
+# --- 1. Keras -> SavedModel -> ONNX float32 (entrée NCHW si possible)
+model.export('saved_model')
+FP32 = 'meteo_fp32.onnx'
+for extra in (['--inputs-as-nchw', 'input'], ['--inputs-as-nchw', 'input:0'], []):
+    r = subprocess.run([sys.executable, '-m', 'tf2onnx.convert', '--saved-model', 'saved_model',
+                        '--output', FP32, '--opset', '15'] + extra, capture_output=True, text=True)
+    if r.returncode == 0:
+        print('Conversion réussie', extra)
+        break
+else:
+    raise RuntimeError(r.stderr[-3000:])
 
-@torch.no_grad()
-def predict_ends(ends):
-    model.eval(); out = []
-    for i in range(0, len(ends), 4096):
-        out.append(model(prep(get_batch(ends[i:i + 4096]))).argmax(1).cpu())
-    return torch.cat(out).numpy()
+# --- 2. Taille de lot fixée à 1 (forme statique)
+m = onnx.load(FP32)
+for v in list(m.graph.input) + list(m.graph.output):
+    v.type.tensor_type.shape.dim[0].dim_value = 1
+onnx.save(m, FP32)
+in_name  = m.graph.input[0].name
+in_shape = [dim.dim_value for dim in m.graph.input[0].type.tensor_type.shape.dim]
+NCHW = in_shape[1] == C
+print('Entrée :', in_name, in_shape, 'NCHW' if NCHW else 'NHWC')
 
-best_f1, best_state = -1, None
-for epoch in range(1, EPOCHS + 1):
-    model.train(); tot = 0
-    for _ in range(steps):
-        ids = np.random.choice(tr, BS)
-        x, y = prep(get_batch(ids), augment=True), get_labels(ids)
-        opt.zero_grad()
-        loss = criterion(model(x), y)
-        loss.backward(); opt.step(); sched.step()
-        tot += loss.item()
-    pv = predict_ends(va); yv = Y[va + HORIZON_H]
-    f1 = f1_score(yv, pv, average="macro")
-    print(f"Epoch {epoch:02d} | loss {tot/steps:.4f} | val acc {(pv==yv).mean():.3f} | val macro-F1 {f1:.3f}")
-    if f1 > best_f1:
-        best_f1, best_state = f1, copy.deepcopy(model.state_dict())
+def layout(x):                                   # x : (N, 12, 1, 6)
+    return np.ascontiguousarray(np.transpose(x, (0, 3, 1, 2))) if NCHW else x
 
-model.load_state_dict(best_state)
+# --- 3. Quantification int8 QDQ, par canal
+PRE  = 'meteo_pre.onnx'
+INT8 = f'{DOSSIER}/meteo_int8.onnx'
+quant_pre_process(FP32, PRE)
 
-# ---- Final test on 2024 ----
-pt = predict_ends(te); yt = Y[te + HORIZON_H]
-print("\nTEST (2024)\n", classification_report(yt, pt, labels=range(len(CLASSES)),
-                                              target_names=CLASSES, zero_division=0))
-print(pd.DataFrame(confusion_matrix(yt, pt, labels=range(len(CLASSES))),
-                   index=CLASSES, columns=[c[:6] for c in CLASSES]))
-torch.save(model.state_dict(), "weather_cnn.pt")
-
-"""# Export the model for STM32 AI tools"""
-
-import onnxruntime as ort
-from onnxruntime.quantization import (quantize_static, CalibrationDataReader,
-                                      QuantType, QuantFormat)
-
-ONNX_FP32 = "weather_cnn.onnx"
-ONNX_INT8 = "weather_cnn_int8.onnx"
-NPZ_VAL   = "weather_val.npz"
-N_VAL     = 300                      # number of validation samples for AI Studio
-rng = np.random.default_rng(0)       # fixed seed -> reproducible files
-
-# ---- 1. Export float32 ONNX (input: (1, 3, 1, W)) ----
-model.load_state_dict(best_state)
-model_cpu = copy.deepcopy(model).cpu().eval()
-dummy = torch.zeros(1, 3, 1, W)
-kw = dict(input_names=["input"], output_names=["logits"], opset_version=13)
-try:
-    torch.onnx.export(model_cpu, dummy, ONNX_FP32, dynamo=False, **kw)
-except TypeError:
-    torch.onnx.export(model_cpu, dummy, ONNX_FP32, **kw)
-
-# ---- 2. Static int8 quantization (QDQ, per-channel) ----
-calib = prep(get_batch(rng.choice(tr, 500, replace=False))).cpu().numpy().astype(np.float32)
-
-class Reader(CalibrationDataReader):
+class Calib(CalibrationDataReader):
     def __init__(self, data):
-        self.it = iter([{"input": d[None]} for d in data])
+        self.it = iter([{in_name: layout(x[None])} for x in data])
     def get_next(self):
         return next(self.it, None)
 
-quantize_static(ONNX_FP32, ONNX_INT8, Reader(calib),
+quantize_static(PRE, INT8, Calib(calib),
                 quant_format=QuantFormat.QDQ,
-                activation_type=QuantType.QInt8, weight_type=QuantType.QInt8,
-                per_channel=True)
+                per_channel=True,
+                activation_type=QuantType.QInt8,
+                weight_type=QuantType.QInt8,
+                calibrate_method=CalibrationMethod.MinMax,
+                extra_options={'WeightSymmetric': True, 'ActivationSymmetric': False})
 
-# ---- 3. Accuracy check float32 vs int8 on the 2024 test set ----
-sess = ort.InferenceSession(ONNX_INT8)
-sub = rng.choice(te, 3000, replace=False)
-xs = prep(get_batch(sub)).cpu().numpy().astype(np.float32)
-ysub = Y[sub + HORIZON_H]
-p_int8 = np.array([sess.run(None, {"input": x[None]})[0].argmax() for x in xs])
-p_fp32 = predict_ends(sub)
-print(f"float32 acc {(p_fp32 == ysub).mean():.3f} | int8 acc {(p_int8 == ysub).mean():.3f}")
-print(f"float32 macro-F1 {f1_score(ysub, p_fp32, average='macro'):.3f} | "
-      f"int8 macro-F1 {f1_score(ysub, p_int8, average='macro'):.3f}")
+# --- 4. Vérification : Keras, ONNX float32 et ONNX int8 sur les mêmes fenêtres
+def predire(path, X):
+    s = ort.InferenceSession(path, providers=['CPUExecutionProvider'])
+    n = s.get_inputs()[0].name
+    return np.array([s.run(None, {n: layout(X[i:i+1])})[0][0] for i in range(len(X))]).argmax(1)
 
-# ---- 4. Validation file for STM32Cube AI Studio ----
-# Keys required by ST: m_inputs_1 (inputs) / m_outputs_1 (one-hot ground truth)
-x_val = xs[:N_VAL]
-y_val = np.eye(len(CLASSES), dtype=np.float32)[ysub[:N_VAL]]
-np.savez(NPZ_VAL, m_inputs_1=x_val, m_outputs_1=y_val)
+p_keras = model.predict(X_test, batch_size=2048, verbose=0).argmax(1)
+p_fp32  = predire(FP32, X_test)
+p_int8  = predire(INT8, X_test)
+for nom, p in [('Keras', p_keras), ('ONNX float32', p_fp32), ('ONNX int8', p_int8)]:
+    print(f'{nom:13s} accuracy = {(p == y_test).mean():.4f}')
+print(f'Accord Keras / int8 : {(p_keras == p_int8).mean():.4f}')
+print(f'Taille du modèle int8 : {os.path.getsize(INT8) / 1024:.1f} Ko')
 
-# ---- 5. Check files before download ----
-d = np.load(NPZ_VAL)
-print(list(d.keys()), d["m_inputs_1"].shape, d["m_outputs_1"].shape,
-      np.unique(d["m_outputs_1"]))
-print("Classes in validation set:",
-      pd.Series(ysub[:N_VAL]).map(lambda i: CLASSES[i]).value_counts().to_dict())
-assert d["m_inputs_1"].shape == (N_VAL, 3, 1, W)
-assert d["m_outputs_1"].shape == (N_VAL, len(CLASSES))
+# --- 5. En-tête C avec le prétraitement, à inclure dans le projet STM32
+mu_c  = ', '.join(f'{v:.6f}f' for v in norm['mu'])
+sd_c  = ', '.join(f'{v:.6f}f' for v in norm['sigma'])
+cls_c = ', '.join('"' + c + '"' for c in norm['classes'])
+ordre = 'index = c*METEO_W + t' if NCHW else 'index = t*METEO_C + c'
+entete = f"""#ifndef METEO_NORM_H
+#define METEO_NORM_H
 
-from google.colab import files
-for f in [ONNX_INT8, NPZ_VAL]:
-    files.download(f)
+/* Généré par Colab : prétraitement identique à l'entraînement */
+#define METEO_W          {W}      /* heures dans la fenêtre (valeurs horaires, UTC) */
+#define METEO_C          {C}      /* T, HR, P_mer, T-Td, sin(h), cos(h) */
+#define METEO_NCLS       {len(norm['classes'])}
+#define METEO_INPUT_NCHW {1 if NCHW else 0}      /* ordre du buffer d'entrée : {ordre} */
 
-"""Cell5 : simulate the board"""
+static const float METEO_MU[METEO_C]    = {{ {mu_c} }};
+static const float METEO_SIGMA[METEO_C] = {{ {sd_c} }};
+static const char *const METEO_CLASSES[METEO_NCLS] = {{ {cls_c} }};
 
-def predict_from_buffer(buf):
-    """buf: (504, 3) oldest -> newest; columns = temperature °C, humidity %, pressure hPa
-       (exactly what the STM32 must do)"""
-    hourly = np.asarray(buf, np.float32).reshape(W, 3, 3).mean(axis=1)   # 3 x 20 min -> 1 h
-    x = np.empty((1, 3, 1, W), np.float32)
-    x[0, 0, 0] = (hourly[:, 0] - 10.0) / 15.0
-    x[0, 1, 0] = (hourly[:, 1] - 50.0) / 30.0
-    x[0, 2, 0] = (hourly[:, 2] - hourly[:, 2].mean()) / 10.0
-    logits = sess.run(None, {"input": x})[0][0]
-    probs = np.exp(logits - logits.max()); probs /= probs.sum()
-    for i in np.argsort(-probs)[:3]:
-        print(f"  {CLASSES[i]:12s} {probs[i]*100:5.1f}%")
+#endif
+"""
+open(f'{DOSSIER}/meteo_norm.h', 'w').write(entete)
+print(entete)
 
-# Demo with a real test window (each hourly value repeated 3 times to fake 20-min data)
-e_ = te[1234]
-buf = np.repeat(A[e_ - W + 1: e_ + 1], 3, axis=0)
-print("Truth:", CLASSES[Y[e_ + HORIZON_H]])
-predict_from_buffer(buf)
+files.download(INT8)
+files.download(f'{DOSSIER}/meteo_norm.h')
+
+# === Jeu de validation pour STM32Cube AI Studio ===
+N = 1000
+X_val = layout(X_test[:N]).astype(np.float32)        # même format que l'entrée ONNX
+s = ort.InferenceSession(FP32, providers=['CPUExecutionProvider'])
+Y_val = np.concatenate([s.run(None, {in_name: X_val[i:i+1]})[0] for i in range(N)]).astype(np.float32)
+
+np.save(f'{DOSSIER}/val_inputs.npy',  X_val)          # (1000, 6, 12, 1) si NCHW
+np.save(f'{DOSSIER}/val_outputs.npy', Y_val)          # (1000, 4) : logits de référence
+np.savez(f'{DOSSIER}/val_data.npz', m_inputs_1=X_val, m_outputs_1=Y_val)
+print(X_val.shape, Y_val.shape)
+
+files.download(f'{DOSSIER}/val_inputs.npy')
+files.download(f'{DOSSIER}/val_outputs.npy')
+files.download(f'{DOSSIER}/val_data.npz')
