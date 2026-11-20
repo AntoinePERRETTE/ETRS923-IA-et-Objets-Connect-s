@@ -29,7 +29,7 @@ Légende des statuts : ✅ réalisé · ⚠️ partiel · ❌ non réalisé · �
 .
 ├── ETRS923.ipynb                  # Notebook Colab du TP1 (MNIST), à la racine
 ├── Application finale/
-│   └── Application/               # Projet STM32CubeIDE final (IA embarquée + capteurs + ThingSpeak)
+│   └── Meteo_Station/               # Projet STM32CubeIDE final (IA embarquée + capteurs + ThingSpeak)
 ├── TP_1/                          # Fichiers Python du TP1
 │   ├── callbackPlots.py           # Callback Keras (courbe d'accuracy en direct) + comptage neurones/synapses
 │   ├── callbacks_torch.py         # Équivalent PyTorch du précédent
