@@ -1,0 +1,28 @@
+../../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1407:22:LL_AHB4_GRP1_EnableClock	24	static
+../../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1755:22:LL_AHB5_GRP1_EnableClock	24	static
+../../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1891:22:LL_AHB5_GRP1_DisableClock	16	static
+../../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1945:22:LL_AHB5_GRP1_ForceReset	16	static
+../../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1999:22:LL_AHB5_GRP1_ReleaseReset	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:137:9:BSP_XSPI_NOR_Init	96	static,ignoring_inline_asm
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:218:9:BSP_XSPI_NOR_DeInit	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:268:26:MX_XSPI_NOR_Init	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:383:9:BSP_XSPI_NOR_Read	40	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:431:9:BSP_XSPI_NOR_Write	64	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:529:9:BSP_XSPI_NOR_Erase_Block	48	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:572:9:BSP_XSPI_NOR_Erase_Chip	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:614:9:BSP_XSPI_NOR_GetStatus	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:664:9:BSP_XSPI_NOR_GetInfo	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:687:9:BSP_XSPI_NOR_EnableMemoryMappedMode	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:734:9:BSP_XSPI_NOR_DisableMemoryMappedMode	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:787:9:BSP_XSPI_NOR_ReadID	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:819:9:BSP_XSPI_NOR_ConfigFlash	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:901:9:BSP_XSPI_NOR_SuspendErase	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:938:9:BSP_XSPI_NOR_ResumeErase	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:980:9:BSP_XSPI_NOR_EnterDeepPowerDown	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:1010:9:BSP_XSPI_NOR_LeaveDeepPowerDown	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:1051:13:XSPI_NOR_MspInit	40	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:1153:13:XSPI_NOR_MspDeInit	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:1173:16:XSPI_NOR_ResetMemory	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:1231:16:XSPI_NOR_EnterDOPIMode	40	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:1310:16:XSPI_NOR_EnterSOPIMode	40	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Drivers/BSP/STM32N6xx_Nucleo/stm32n6xx_nucleo_xspi.c:1382:16:XSPI_NOR_ExitOPIMode	40	static

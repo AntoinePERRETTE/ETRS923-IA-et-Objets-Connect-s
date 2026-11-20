@@ -1,0 +1,34 @@
+../../../Drivers/CMSIS/Include/core_cm55.h:3918:22:__NVIC_EnableIRQ	16	static,ignoring_inline_asm
+../../../Drivers/CMSIS/Include/core_cm55.h:3956:22:__NVIC_DisableIRQ	16	static,ignoring_inline_asm
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:464:22:EpochBlock_IsLastEpochBlock	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:469:22:EpochBlock_IsEpochStart	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:479:22:EpochBlock_IsEpochBlob	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:484:22:EpochBlock_IsBlobEncrypted	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:494:22:EpochBlock_IsEpochPureHW	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:504:22:EpochBlock_IsEpochInternal	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:509:26:EpochBlock_EpochControllerUnit	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:515:27:EpochBlock_EpochBlobAddr	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.h:37:22:__ll_set_aton_owner	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.h:54:22:__ll_clear_aton_owner	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.h:87:22:__LL_ATON_RT_Start_AtoNN_Epoch	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.h:121:22:__LL_ATON_RT_SetWaitMask	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.h:149:22:__LL_ATON_RT_RetFromLibEpochBlockArray	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:74:19:dump_dma_state	4	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:119:20:__LL_ATON_RT_ExecStartEpochBlock	40	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:231:20:__LL_ATON_RT_ExecEndEpochBlock	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:287:13:__LL_ATON_RT_DetermineNextEpochBlock	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:328:24:__LL_ATON_RT_GetWaitMask	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:342:20:__LL_ATON_RT_Init_Network	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:411:6:LL_ATON_RT_SetRuntimeCallback	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:424:6:LL_ATON_RT_SetEpochCallback	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:438:6:LL_ATON_RT_SetNetworkCallback	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:474:6:LL_ATON_RT_Init_Network	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:515:6:LL_ATON_RT_DeInit_Network	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:568:6:LL_ATON_RT_Reset_Network	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:583:6:LL_ATON_RT_RuntimeInit	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:631:6:LL_ATON_RT_RuntimeDeInit	8	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:663:24:LL_ATON_RT_RunEpochBlock	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:875:13:__LL_ATON_RT_IrqErr	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:987:20:__LL_ATON_RT_IrqEpochBlock	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:1036:20:__LL_ATON_RT_IrqEpochBlob	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.c:1058:6:NPU0_IRQHandler	16	static,ignoring_inline_asm

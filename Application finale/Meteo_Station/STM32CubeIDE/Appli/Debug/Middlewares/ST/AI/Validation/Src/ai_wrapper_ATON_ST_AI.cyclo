@@ -1,0 +1,41 @@
+../../../Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:521:32:LL_Buffer_addr_base	2
+../../../Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:531:32:LL_Buffer_addr_start	1
+../../../Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:536:32:LL_Buffer_addr_end	1
+../../../Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:546:26:LL_Buffer_len	1
+../../../Drivers/CMSIS/Include/m-profile/armv8m_pmu.h:222:22:ARM_PMU_CYCCNT_Reset	1
+../../../Drivers/CMSIS/Include/m-profile/armv8m_pmu.h:263:26:ARM_PMU_Get_CCNTR	1
+../../../Middlewares/ST/AI/Npu/ll_aton_caches_interface.h:73:22:LL_ATON_Cache_MCU_Invalidate_Range	1
+../../../Middlewares/ST/AI/Npu/ll_aton_caches_interface.h:94:22:LL_ATON_Cache_MCU_Clean_Invalidate_Range	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:57:5:npu_cache_counters_enable	2
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:67:5:npu_cache_counters_disable	2
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:76:5:npu_cache_counters_get	4
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:175:10:get_ll_buffer_size	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:180:10:get_ll_element_size	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:189:29:_get_nn_instance	2
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:263:17:_get_nn_params_size	6
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:292:17:_get_used_size_from_region	10
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:331:17:_get_nn_activations_size	6
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:382:17:_get_nn_epochs_num	3
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:405:13:_populate_nn_info	11
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:553:6:_dump_streng_counters	3
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:565:22:_init_npu_free_counter	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:578:22:_reset_npu_free_counter	2
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:586:22:_deinit_npu_free_counter	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:591:26:_get_cycles_npu_free_counter	2
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:599:13:_npu_counters_PRE_START	20
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:706:13:_npu_counters_POST_START	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:712:13:_npu_counters_PRE_END	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:717:13:_npu_counters_POST_END	8
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:767:13:_rt_callback	2
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:784:13:_epoch_callback	12
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:857:13:_npu_internal_reset	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:870:13:_prepare_input_buffers	4
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:890:13:_prepare_output_buffers	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:895:13:_force_clean_cache_subsystem	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:919:5:npu_get_instance_by_index	3
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:949:30:npu_get_input_buffers_info	6
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:993:30:npu_get_output_buffers_info	6
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:1037:30:npu_get_internal_buffers_info	2
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:1061:5:npu_set_callback	2
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:1079:5:npu_init	6
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/ai_wrapper_ATON_ST_AI.c:1122:5:npu_run	13

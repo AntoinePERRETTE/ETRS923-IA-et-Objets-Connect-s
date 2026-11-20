@@ -1,0 +1,15 @@
+../Application/User/Meteo/meteo_app.c:73:20:f1	40	static
+../Application/User/Meteo/meteo_app.c:86:12:chiffre	16	static
+../Application/User/Meteo/meteo_app.c:89:13:horloge_depuis_http	40	static
+../Application/User/Meteo/meteo_app.c:110:12:heure_utc	16	static
+../Application/User/Meteo/meteo_app.c:118:12:ts_transport	376	static
+../Application/User/Meteo/meteo_app.c:159:13:demander_heure	16	static
+../Application/User/Meteo/meteo_app.c:174:13:fenetre_ajouter	32	static
+../Application/User/Meteo/meteo_app.c:201:13:calculer_grandeurs	48	static
+../Application/User/Meteo/meteo_app.c:239:12:ia_init	24	static
+../Application/User/Meteo/meteo_app.c:254:15:quantifier	24	static
+../Application/User/Meteo/meteo_app.c:263:13:construire_entree	72	static
+../Application/User/Meteo/meteo_app.c:287:12:ia_classer	64	static,ignoring_inline_asm
+../Application/User/Meteo/meteo_app.c:313:12:code_unite	24	static
+../Application/User/Meteo/meteo_app.c:322:13:meteo_thread_entry	160	static
+../Application/User/Meteo/meteo_app.c:404:6:METEO_App_Start	40	static

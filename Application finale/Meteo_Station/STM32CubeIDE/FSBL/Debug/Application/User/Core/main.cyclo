@@ -1,0 +1,7 @@
+../../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:679:22:LL_MEM_EnableClock	1
+../../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1407:22:LL_AHB4_GRP1_EnableClock	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/FSBL/Core/Src/main.c:70:5:main	2
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/FSBL/Core/Src/main.c:134:6:SystemClock_Config	10
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/FSBL/Core/Src/main.c:252:13:MX_XSPI2_Init	3
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/FSBL/Core/Src/main.c:303:13:MX_GPIO_Init	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/FSBL/Core/Src/main.c:352:6:Error_Handler	1

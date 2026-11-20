@@ -1,0 +1,11 @@
+../Application/User/Meteo/platform.c:19:9:platform_lps22df_read	32	static
+../Application/User/Meteo/platform.c:32:9:platform_lps22df_write	32	static
+../Application/User/Meteo/platform.c:45:9:platform_stts22h_read	32	static
+../Application/User/Meteo/platform.c:58:9:platform_stts22h_write	32	static
+../Application/User/Meteo/platform.c:71:9:platform_sht40ad1b_read	24	static
+../Application/User/Meteo/platform.c:85:9:platform_sht40ad1b_write	24	static
+../Application/User/Meteo/platform.c:95:9:platform_I2C_Transmit	32	static
+../Application/User/Meteo/platform.c:106:9:platform_I2C_Receive	32	static
+../Application/User/Meteo/platform.c:117:9:platform_I2C_write	40	static
+../Application/User/Meteo/platform.c:128:9:platform_I2C_read	40	static
+../Application/User/Meteo/platform.c:139:6:platform_delay	24	static

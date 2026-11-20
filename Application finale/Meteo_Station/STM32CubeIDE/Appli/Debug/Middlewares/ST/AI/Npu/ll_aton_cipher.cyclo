@@ -1,0 +1,5 @@
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.h:37:22:__ll_set_aton_owner	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_runtime.h:54:22:__ll_clear_aton_owner	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_cipher.c:35:5:LL_DmaCypherInit	8
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_cipher.c:170:5:LL_ExtDmaCypherInit	15
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_cipher.c:370:6:LL_ATON_DecryptAndCopy	1

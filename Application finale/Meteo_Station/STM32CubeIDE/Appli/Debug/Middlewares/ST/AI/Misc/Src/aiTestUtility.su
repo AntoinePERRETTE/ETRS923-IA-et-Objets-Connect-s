@@ -1,0 +1,24 @@
+../../../Middlewares/ST/AI/Misc/Inc/ai_device_adaptor.h:417:22:port_io_get	24	static
+../../../Middlewares/ST/AI/Misc/Inc/ai_device_adaptor.h:432:22:port_io_write	24	static
+../../../Middlewares/ST/AI/Misc/Inc/ai_device_adaptor.h:441:22:port_io_read	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:150:6:ioRawGetUint8	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:262:6:ioRawWriteBuffer	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:267:6:ioRawReadBuffer	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:272:6:ioRawDisableLLWrite	4	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:285:5:_write	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:383:7:uint64ToDecimal	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:396:6:uint32_to_str	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:420:13:_put_c_driver	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:435:6:lc_print	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:449:13:_put_c_buffer_cb	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:459:8:lc_vsnprint	40	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:485:7:__wrap_malloc	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:525:6:__wrap_free	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:580:6:stackMonInit	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:626:5:dwtCyclesToTime	224	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:643:7:dwtCyclesToFloatMs	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:651:20:devIdToStr	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:769:29:bitToStr	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:779:6:getSysConf	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:839:10:getFlashCacheConf	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Misc/Src/aiTestUtility.c:1005:6:systemSettingLog	56	static

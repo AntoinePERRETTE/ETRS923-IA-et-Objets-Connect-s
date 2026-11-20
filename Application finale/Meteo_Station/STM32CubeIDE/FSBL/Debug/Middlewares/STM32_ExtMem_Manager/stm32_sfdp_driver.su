@@ -1,0 +1,12 @@
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_driver.c:140:38:EXTMEM_DRIVER_NOR_SFDP_Init	48	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_driver.c:273:38:EXTMEM_DRIVER_NOR_SFDP_DeInit	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_driver.c:285:6:EXTMEM_DRIVER_NOR_SFDP_GetFlashInfo	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_driver.c:311:38:EXTMEM_DRIVER_NOR_SFDP_Read	40	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_driver.c:345:38:EXTMEM_DRIVER_NOR_SFDP_Write	56	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_driver.c:427:38:EXTMEM_DRIVER_NOR_SFDP_WriteInMappedMode	136	static,ignoring_inline_asm
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_driver.c:565:38:EXTMEM_DRIVER_NOR_SFDP_MassErase	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_driver.c:612:38:EXTMEM_DRIVER_NOR_SFDP_SectorErase	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_driver.c:702:38:EXTMEM_DRIVER_NOR_SFDP_Enable_MemoryMappedMode	40	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_driver.c:725:38:EXTMEM_DRIVER_NOR_SFDP_Disable_MemoryMappedMode	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_driver.c:764:38:driver_set_FlagWEL	56	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/STM32_ExtMem_Manager/nor_sfdp/stm32_sfdp_driver.c:827:13:EXTMEM_MemCopy	32	static

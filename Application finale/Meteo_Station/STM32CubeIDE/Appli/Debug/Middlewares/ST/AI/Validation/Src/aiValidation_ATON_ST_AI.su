@@ -1,0 +1,41 @@
+../../../Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:479:22:EpochBlock_IsEpochBlob	16	static
+../../../Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:489:22:EpochBlock_IsEpochPureSW	16	static
+../../../Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:499:22:EpochBlock_IsEpochHybrid	16	static
+../../../Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:504:22:EpochBlock_IsEpochInternal	16	static
+../../../Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:521:32:LL_Buffer_addr_base	24	static
+../../../Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:531:32:LL_Buffer_addr_start	16	static
+../../../Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:536:32:LL_Buffer_addr_end	16	static
+../../../Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:546:26:LL_Buffer_len	16	static
+../../../Drivers/CMSIS/Include/m-profile/armv8m_pmu.h:222:22:ARM_PMU_CYCCNT_Reset	4	static
+../../../Drivers/CMSIS/Include/m-profile/armv8m_pmu.h:263:26:ARM_PMU_Get_CCNTR	4	static
+../../../Middlewares/ST/AI/Npu/ll_aton_caches_interface.h:94:22:LL_ATON_Cache_MCU_Clean_Invalidate_Range	16	static
+../../../Middlewares/ST/AI/Misc/Inc/aiTestUtility.h:321:22:cyclesCounterInit	40	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:161:6:_print_debug	28	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:200:13:_is_ll_buffer_valid	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:215:17:set_ai_buffer_format	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:246:13:encode_buffer_to_tensor_desc	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:267:13:fill_tensor_desc_msg	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:305:13:encode_ll_buffer_to_tensor_desc	40	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:320:17:_stai_compiler_id_to	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:343:17:_stai_version_to_uint32	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:351:13:send_model_info	192	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:438:13:receive_ai_io_tensor	72	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:484:13:send_ai_io_tensor	64	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:541:29:aiExecCtx	32	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:575:13:print_ll_io_buffer	80	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:617:12:aiBootstrap	88	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:672:13:_buffer_is_filtered	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:687:9:_find_cdt_ll_buffers	48	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:730:6:_log_counters	128	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:863:17:_get_node_type	40	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:922:6:npu_dump_tensors_cb	168	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:1031:13:aiDone	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:1041:12:aiInit	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:1062:13:aiDeInit	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:1078:6:aiPbCmdSysInfo	80	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:1124:6:aiPbCmdNNInfo	72	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:1175:13:_set_context	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:1199:6:aiPbCmdNNRun	176	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:1346:5:aiValidationInit	8	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:1360:5:aiValidationProcess	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Validation/Src/aiValidation_ATON_ST_AI.c:1414:6:aiValidationDeInit	8	static

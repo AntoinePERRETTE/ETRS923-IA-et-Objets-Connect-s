@@ -1,0 +1,12 @@
+../../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1165:22:LL_AHB3_GRP1_EnableClock	1
+../../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1407:22:LL_AHB4_GRP1_EnableClock	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Appli/Core/Src/main.c:96:5:main	5
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Appli/Core/Src/main.c:158:13:MX_CACHEAXI_Init	2
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Appli/Core/Src/main.c:184:13:MX_ETH1_Init	3
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Appli/Core/Src/main.c:231:13:MX_I2C1_Init	4
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Appli/Core/Src/main.c:279:13:MX_LPUART1_UART_Init	5
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Appli/Core/Src/main.c:327:15:SystemIsolation_Config	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Appli/Core/Src/main.c:376:13:MX_GPIO_Init	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Appli/Core/Src/main.c:441:6:MPU_Config	1
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Appli/Core/Src/main.c:496:6:HAL_TIM_PeriodElapsedCallback	2
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Appli/Core/Src/main.c:515:6:Error_Handler	1

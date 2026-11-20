@@ -1,0 +1,4 @@
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:521:32:LL_Buffer_addr_base	24	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:531:32:LL_Buffer_addr_start	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_NN_interface.h:546:26:LL_Buffer_len	16	static
+C:/Users/Jerem/Documents/IA de con/code_cube_ide/ia_test_run/Middlewares/ST/AI/Npu/ll_aton_profiler.c:35:5:LL_ATON_LIB_ConvInteger	240	static
