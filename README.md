@@ -21,6 +21,8 @@ Ce dépôt regroupe le travail des quatre TP du module *Systèmes embarqués et 
 
 Légende des statuts : ✅ réalisé · ⚠️ partiel · ❌ non réalisé · ❓ à confirmer par l'équipe.
 
+Page web : https://ia-meteostation-technolac.netlify.app
+
 ---
 
 ## 1. Structure du dépôt
