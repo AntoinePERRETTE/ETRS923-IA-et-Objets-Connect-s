@@ -277,6 +277,176 @@ toutes les       = 7 jours                                  Colab)             S
 - Les threads ThreadX/NetXDuo et le module `thingspeak.c` du TP2 assurent la communication ; l'envoi publie les mesures et la prédiction sur le canal.
 - **Contrainte de démarrage** : le modèle a besoin de 7 jours d'historique (504 mesures). Tant que le tampon n'est pas rempli, aucune prédiction fiable n'est possible.
 
+### 5.1 ThingSpeak : le stockage des données
+
+[ThingSpeak](https://thingspeak.mathworks.com) est un service cloud qui enregistre des mesures horodatées dans un **canal** (*channel*). Chaque canal possède jusqu’à 8 **champs** (`field1` à `field8`) ; chaque envoi crée une **entrée** qui contient la valeur de chaque champ et la date de réception.
+
+**Canal utilisé** : public, identifiant `3546316`.
+
+#### Organisation des champs
+
+| Champ | Contenu | Unité |
+|---|---|---|
+| `field1` | Température | °C |
+| `field2` | Humidité | % HR |
+| `field3` | Pression (capteur) | hPa |
+| `field4` | Baromètre (pression ramenée au niveau de la mer) | hPa |
+| `field5` | **Code météo** prédit par l’IA (voir ci-dessous) | entier |
+| `field6` | Confiance de l’IA | % |
+| `field7` | Température prédite à +3 h | °C |
+| `field8` | Libre | – |
+
+Les champs doivent être **activés** dans les réglages du canal (*Channel Settings*), sinon ils ne sont pas renvoyés à la lecture.
+
+#### Code météo (`field5`)
+
+Un seul nombre transporte deux informations : la **dizaine** donne le temps prévu, l’**unité** donne une information complémentaire. Exemple : `54` = pluie + vigilance jaune.
+
+| Dizaine | Temps | | Unité | Information complémentaire |
+|---|---|---|---|---|
+| 10 | Soleil | | 0 | Aucune |
+| 20 | Soleil et nuage | | 1 | Attention : rafales de vent |
+| 30 | Soleil et beaucoup de nuage | | 2 | Attention : verglas |
+| 40 | Pluie éparse | | 3 | Attention : forte chaleur |
+| 50 | Pluie | | 4 | Vigilance jaune |
+| 60 | Forte pluie | | 5 | Vigilance orange |
+| 70 | Orage | | 6 | Vigilance rouge |
+| 80 | Neige | | | |
+| 90 | Brouillard | | | |
+
+#### Écriture (depuis la carte)
+
+L’écriture exige la **Write API Key** du canal. Cette clé reste **uniquement dans le firmware** de la carte ; elle ne doit jamais apparaître dans le site ni dans le dépôt Git.
+
+Envoi simple (une entrée) :
+
+```
+GET https://api.thingspeak.com/update?api_key=<WRITE_API_KEY>&field1=23.50&field2=61.00&field3=1012.30&field4=1013.10&field5=54&field6=87&field7=22.50
+```
+
+La réponse contient le numéro de l’entrée créée ; **`0` signifie que l’envoi a été refusé** (intervalle trop court, clé invalide, canal non rattaché à la licence).
+
+Envoi groupé (plusieurs entrées en une requête) : `POST https://api.thingspeak.com/channels/3546316/bulk_update.json` avec un corps JSON (`write_api_key`, `time_format`, tableau `updates` contenant un `delta_t` et les champs de chaque mesure).
+
+Les fonctions C qui construisent ces requêtes pour le STM32 sont dans `thingspeak.c` et `thingspeak.h`. Elles sont indépendantes du moyen de connexion : seule la fonction de transport TCP (Wi-Fi par commandes AT, Ethernet, modem…) est à fournir.
+
+**Cadence et limites.** Avec un compte gratuit, deux envois doivent être espacés d’au moins 15 secondes ; une licence payante ou étudiante autorise un intervalle plus court une fois le canal rattaché à la licence (champ *Associated License* du canal). Pour de la météo, un envoi toutes les 5 à 10 minutes suffit et reste très en dessous des quotas annuels de messages.
+
+#### Lecture (depuis le site)
+
+Le canal étant public, la lecture ne demande **aucune clé** :
+
+```
+GET https://api.thingspeak.com/channels/3546316/feeds.json?results=200
+```
+
+La réponse JSON contient les informations du canal et un tableau `feeds` : chaque élément porte `created_at`, `entry_id` et les valeurs `field1` à `field8` (sous forme de texte). Un canal public est lisible par tout le monde mais **modifiable uniquement avec la Write API Key**.
+
+---
+
+### Netlify : l’hébergement du site
+
+[Netlify](https://www.netlify.com) héberge le site : il s’agit d’un **site statique** (un seul fichier `index.html`). Il n’y a ni serveur, ni base de données, ni étape de compilation : Netlify se contente de servir le fichier en HTTPS.
+
+#### Déployer
+
+Trois méthodes équivalentes, de la plus simple à la plus automatisable :
+
+1. **Glisser-déposer** : sur [app.netlify.com/drop](https://app.netlify.com/drop), déposer le dossier qui contient `index.html`.
+2. **Ligne de commande** :
+   ```
+   npm install -g netlify-cli
+   netlify login
+   netlify deploy --dir=. --prod
+   ```
+   (sans `--prod`, la commande crée une prévisualisation temporaire.)
+3. **Dépôt Git** : relier le dépôt à Netlify, avec une *build command* vide et `.` comme *publish directory*. Chaque `git push` redéploie le site.
+
+Pour mettre à jour le site, il suffit de redéployer après avoir modifié `index.html`.
+
+#### Adresse et nom de domaine
+
+Netlify attribue une adresse du type `https://<nom-du-site>.netlify.app`, avec un certificat HTTPS automatique. Un nom de domaine personnalisé s’ajoute dans *Domain management* ; Netlify indique alors les enregistrements DNS à créer chez le registrar.
+
+#### Ce qu’il faut retenir
+
+- Le site est **public** : tout ce qui est dans `index.html` est lisible par les visiteurs. C’est pourquoi il ne contient **aucune clé**.
+- Les données ne transitent pas par Netlify : la page est téléchargée depuis Netlify, puis **le navigateur du visiteur interroge ThingSpeak directement**.
+- L’hébergeur est interchangeable (Cloudflare Pages, GitHub Pages, etc.) : le site n’a aucune dépendance propre à Netlify.
+
+---
+
+### Le site web
+
+#### Contenu
+
+| Élément | Rôle |
+|---|---|
+| Cartes de mesures | Température, humidité, pression et tendance sur 3 h (en hPa, avec le sens de variation) |
+| Carte de prédiction | Icône et libellé du temps prévu, confiance de l’IA, température prédite à +3 h |
+| Information complémentaire | Alternée avec la prévision toutes les 4,5 s lorsque l’unité du code est non nulle ; couleur de bord jaune, orange ou rouge pour les vigilances |
+| Graphiques | Température et humidité ; pression et temps prédit (dessinés en canvas, sans bibliothèque externe) |
+| Tableau | Les 30 dernières mesures, avec la prévision correspondante |
+
+Si l’utilisateur a demandé de réduire les animations dans son système, l’alternance est remplacée par un bandeau fixe affichant l’information complémentaire à côté de la prévision.
+
+#### Fonctionnement
+
+1. Au chargement, la page lit sa configuration (identifiant du canal, numéros de champs).
+2. Elle appelle `feeds.json?results=200` et convertit chaque entrée (dates, valeurs numériques).
+3. Elle calcule la **tendance** de pression sur 3 h (dernière valeur moins celle d’il y a environ 3 heures).
+4. Elle **décode** le code météo : `dizaine = code − (code mod 10)` pour le temps, `unité = code mod 10` pour l’information complémentaire.
+5. Elle affiche les valeurs, les graphiques et le tableau, puis recommence toutes les **60 secondes**.
+
+Si aucun code météo n’est présent dans les données, la page affiche une **estimation locale** basée uniquement sur la tendance de pression, et l’indique explicitement (« Estimation locale »). Ce n’est pas la prédiction de l’IA, mais un repli.
+
+#### Configuration
+
+Elle se trouve en tête du script de `index.html` (bloc `CONFIGURATION`) :
+
+```js
+const cfg={
+  ch:"3546316",   // identifiant du canal ThingSpeak (public)
+  key:"",         // laissé vide : aucune clé côté site
+  n:200,          // nombre de mesures chargées
+  refresh:60,     // rafraîchissement en secondes
+  fT:1,fH:2,fP:3,fB:4,fC:5,fK:6,fPT:7   // numéros de champs (0 = ignoré)
+};
+```
+
+#### Tester en local
+
+```
+python -m http.server 8000
+```
+
+Puis ouvrir `http://localhost:8000/` (données réelles) ou `http://localhost:8000/?demo` (données simulées, utile sans carte allumée : la démo passe par plusieurs types de temps et une vigilance).
+
+#### Publicités fictives
+
+Deux encarts parodiques (jeu vidéo et parapluies, signalés « Publicité fictive ») s’affichent de chaque côté du contenu sur les écrans d’au moins 1440 px de large. Ils n’écrivent aucune donnée ; l’encart parapluie se contente de lire la prévision affichée pour s’ouvrir en cas de pluie. Pour les retirer, supprimer le bloc CSS « Publicités fictives », les deux balises `<aside class="ad">` et le second `<script>` de la page.
+
+#### Dépannage
+
+| Symptôme | Cause probable |
+|---|---|
+| « Erreur : HTTP 400 » | Canal introuvable ou non public |
+| « Aucune donnée » | Canal vide, ou champs non activés dans les réglages du canal |
+| Valeurs `–` pour certaines grandeurs | Numéro de champ incorrect dans `cfg` |
+| « Estimation locale » au lieu de la prédiction IA | `field5` n’est pas envoyé par la carte |
+| « Code inconnu (nn) » | Dizaine hors de la liste 10 à 90 |
+| Erreur réseau | Ouvrir la console du navigateur (`F12`) pour lire le message détaillé |
+| Ancienne version après redéploiement | Vider le cache avec `Ctrl` + `F5` |
+
+---
+
+### Sécurité et limites
+
+- La **Write API Key** n’est jamais publiée : elle reste dans le firmware (et hors du dépôt Git).
+- Un canal public rend les mesures lisibles par tous ; il ne permet pas de les modifier.
+- Les courbes de l’IA et l’estimation locale sont des **aides à la prévision**, pas des sources officielles : les vigilances réelles sont émises par les services météorologiques nationaux.
+
+
 ---
 
 ## 6. Écarts entre les sujets et notre réalisation
